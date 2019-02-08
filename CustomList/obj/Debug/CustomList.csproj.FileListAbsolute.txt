@@ -1,0 +1,7 @@
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomList\bin\Debug\CustomList.exe.config
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomList\bin\Debug\CustomList.exe
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomList\bin\Debug\CustomList.pdb
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomList\obj\Debug\CustomList.csprojAssemblyReference.cache
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomList\obj\Debug\CustomList.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomList\obj\Debug\CustomList.exe
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomList\obj\Debug\CustomList.pdb
