@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomList", "CustomList.csproj", "{F4EE1C75-3121-4F65-BF11-3321D7A27849}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomListProject", "CustomListProject.csproj", "{F4EE1C75-3121-4F65-BF11-3321D7A27849}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomListTest", "..\CustomListTest\CustomListTest.csproj", "{48897D03-C00F-4293-BE6D-E7FB9ED88720}"
 EndProject
