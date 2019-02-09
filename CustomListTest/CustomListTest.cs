@@ -152,34 +152,38 @@ namespace CustomListTest
         }
         [TestMethod]
         //[ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void Item_Add5Remove2_Returns5()
+        public void Item_Add5Remove2_Returns3()
         {
             // Arrange
             //Exception exception = new ArgumentOutOfRangeException();
             // create the custom list
             int loopCount = 5;
             int result;
-            int resultExpected = 5;
+            int resultExpected = 4;
             CustomList<int> customList = new CustomList<int>();
-            CustomList<string> stringList = new CustomList<string>();
-            stringList.Add(3);
+
+            // Act
             for (int i = 0; i < loopCount; i++)
             {
                 customList.Add(i);
             }
             customList.Remove(2);
             customList.Remove(3);
-            // Act
-
-
+            // TODO - change to use brackets, make default???
+            result = customList.GetItem(2);
 
             // ENABLE THIS WHEN I CAN:
-            // result = customList[3];
+            // result = customList[2];
+
             // Assert
             // ENABLE THIS WHEN I CAN:
-            //Assert.AreEqual(result, resultExpected);
+            Assert.AreEqual(result, resultExpected);
         }
 
+        // TODO - GetItem needs to be changed to be brackets, not () above;
+        // after that, write a test to test for out-of-bounds 
+        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
+        //Exception exception = new ArgumentOutOfRangeException();
 
 
     }

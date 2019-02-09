@@ -10,6 +10,20 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
+            CustomList<int> customList = new CustomList<int>();
+            //customList.Count();
+            Console.WriteLine(customList.Count) ;
+            customList.Add(0);
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            customList.Add(4);
+            Console.WriteLine(customList.Count);
+
+            customList.Remove(2) ;
+            customList.Remove(3);
+            Console.WriteLine(customList.GetItem(2));
+
 
             //List<int> realListInts = new List<int>();
             //realListInts.Add(0);
@@ -49,7 +63,7 @@ namespace CustomListProject
             //Console.WriteLine(realListStrings.Count);
 
 
-            CustomList<int> customList = new CustomList<int>();
+            //CustomList<int> customList = new CustomList<int>();
 
             Console.WriteLine(customList.ToString());
             // prints CustomListProject.CustomList`1[System.Int32]
