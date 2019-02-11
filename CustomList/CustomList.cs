@@ -73,6 +73,7 @@ namespace CustomListProject
             {
                 return;
             }
+             
             // loop through the array, looking for the item
             for (int i = 0; i < count; i++)
             {
@@ -94,35 +95,48 @@ namespace CustomListProject
                 }
             }
         }
-        // Obsolete by indexer
-        //public T GetItem(int index)
-        //{
-        //    return items[index];
-        //}
-        public T this[int index]    // Indexer declaration  
+        public T this[int index]      
         {
-            // TODO - check if out of bounds
+            // TODO - test this
             // check for index < 0 or >= count
             // if given an index that's out of bounds, an error will occur
             // IndexOutOfRangeException Class , see https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception?view=netframework-4.7.2
 
-            //if (-1 < 0) 
-            //{
-            //   throw IndexOutOfRangeException() ;
-            //}
-            // get and set accessors  
-            get =>  items [index];
-            set => items[index] = value;
+            // from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
+            // Do not throw System.Exception, System.SystemException, System.NullReferenceException, or System.IndexOutOfRangeException intentionally from your own source code.
+            get
+            {
+                // if index is >= 0 & < count, return it
+                if (index >= 0 && index < count)
+                {
+                    return items[index];
+                }
+                else
+                {
+                    // this code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
+                    ArgumentException argEx = new ArgumentException("Index is out of range", "index");
+                    throw argEx;
+                }
+            }
+            set
+            {
+                if (index >= 0 && index < count)
+                {
+                    items[index] = value;
+                }
+                else
+                {
+                    // this code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
+                    ArgumentException argEx = new ArgumentException("Index is out of range", "index");
+                    throw argEx;
+                }
+            }
         }
 
 
-        //?? public T GetValue(int index)
-        //{
-        //    return items[index].;
-        //}
-        // remove nth item, or find this item & remove it??
+    // remove nth item, or find this item & remove it??
 
-        public override string ToString ()
+    public override string ToString ()
         {
             return "";
         }

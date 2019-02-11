@@ -231,7 +231,7 @@ namespace CustomListTest
             result = customList[index];
 
             // Assert
-           // Assert.ThrowsException();//.AreEqual(result, resultExpected);
+            // Assert.ThrowsException();//.AreEqual(result, resultExpected);
         }
 
     }
