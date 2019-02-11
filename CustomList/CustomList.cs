@@ -135,15 +135,12 @@ namespace CustomListProject
         }
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
-            // TODO - should be allow the user to zip lists that are of different lengths?
-            // if yes, we can't use foreach
+            // allow the user to zip lists that are of different lengths;
             // Because these are custom lists, we CAN use its Count methods
             CustomList<T> newList = new CustomList<T>();
 
-            int countSecondList = secondList.Count;
-            T[] tempArray = new T[count + secondList.Count] ;
-
-            // Set up new array of the size of both arrays
+            // set the limit of the length where to stop zipping;  
+            // after that, add the remaining longer side
             int iLimit;
             if (count < secondList.Count)
             {
@@ -161,21 +158,24 @@ namespace CustomListProject
                 //newList.Add(secondList.MoveNext())
             }
 
-            // now add the rest of the longer list
-            if (count < secondList.Count)
+            // if one side is longer, add the rest of the longer list
+            if (count != secondList.Count)
             {
-                for (int i = iLimit; i < secondList.Count; i++)
+                if (count < secondList.Count)
                 {
-                    newList.Add(secondList[i]);
-                    // ???? use movenext
+                    for (int i = iLimit; i < secondList.Count; i++)
+                    {
+                        newList.Add(secondList[i]);
+                        // ???? use movenext
+                    }
                 }
-            }
-            else
-            {
-                for (int i = iLimit; i < iLimit ; i++)
+                else
                 {
-                    newList.Add(items[i]);
-                    // ???? use movenext
+                    for (int i = iLimit; i < count; i++)
+                    {
+                        newList.Add(items[i]);
+                        // ???? use movenext
+                    }
                 }
             }
             return newList;

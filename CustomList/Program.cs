@@ -11,6 +11,23 @@ namespace CustomListProject
         static void Main(string[] args)
         {
 
+            
+
+
+
+
+
+            CustomList<int> firstList = new CustomList<int>() { 1, 3, 5, 7, 8, 9 };
+            Console.WriteLine(   firstList.Count);
+            CustomList<int> secondList = new CustomList<int>() { 2, 4, 6 };
+            Console.WriteLine(secondList.Count);
+            CustomList<int> zippedList;
+            // Act
+            zippedList = firstList.Zipper(secondList);
+
+
+
+
             //List<int> realListInts = new List<int>() { 0, 1, 2, 3 };
             //realListInts.Add(0);
 
