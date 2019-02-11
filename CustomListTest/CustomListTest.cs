@@ -655,6 +655,35 @@ namespace CustomListTest
                 );
         }
 
+        // Subtraction Overload Testing
 
+        [TestMethod]
+        // subtracting two CustomList<int> first list 11 items, second list 3 items
+        public void SubtractionOverload_1stLists11Ints2ndList3Ints_CountEquals8()
+        {
+            // Arrange
+            int ExpectedResults = 8;
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList - secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+        [TestMethod]
+        // subtracting two CustomList<int> first list 11 items, second list 3 items
+        public void SubtractionOverload_1stListEmpty_CountEquals0()
+        {
+            // Arrange
+            int ExpectedResults = 8;
+            CustomList<int> firstList = new CustomList<int>() { 5,5,5,5,6,6,6,6};
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList - secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
     }
 }
