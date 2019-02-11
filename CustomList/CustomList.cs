@@ -76,14 +76,16 @@ namespace CustomListProject
                     // create new array
                     T[] tempItems = new T[arraySize];
                     // copy the from the old array up to the found item (at i)
-                    // TODO - when time allows, use the inline if HERE, skipping i in the copy
+                    // TODO - when time allows, 
+                    // use the inline if HERE;
+                    // skipping i in the copy using continue keyword (see loops powerpoint)
                     for (int j = 0; j < i; j++) { tempItems[j] = items[j]; }
                     // now copy the remaining items AFTER i
                     for (int j = i + 1; j < count; j++) { tempItems[j - 1] = items[j]; }
 
                     // decrement count
                     count--;
-                    // re-create the original array - TODO - ??????  use enumerator
+                    // re-create the original array - TODO when time allows - ??????  use enumerator
                     items = new T[arraySize];
                    for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
                 }
@@ -161,6 +163,7 @@ namespace CustomListProject
             // if one side is longer, add the rest of the longer list
             if (count != secondList.Count)
             {
+                // raiseevent to alert user, allow him/her to cancel - for future development
                 if (count < secondList.Count)
                 {
                     for (int i = iLimit; i < secondList.Count; i++)
@@ -185,22 +188,32 @@ namespace CustomListProject
             return "";
         }
 
-        //public CustomList Iterator()
+        // overload the + operator:  makes {1,3,5} & {2,4,6} into {1,3,5,2,4,6}
+        public static CustomList<T> operator + (CustomList<T> firstList, CustomList<T> secondList)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            foreach (T thisItem in firstList)
+            {
+                newList.Add(thisItem);
+            }
+            foreach (T thisItem in secondList)
+            {
+                newList.Add(thisItem);
+            }
+            //CustomList<int> thing = new CustomList<int>();
+            //return thing;
+
+            return newList;
+
+
+        }
+
+        // overload the – operator:  makes {1,3,5} & {2,1,6} into {3,5}
+        //public CustomList<T> Subtraction()
         //{
 
         //}
-        //public CustomList Addition()
-        //{
 
-        //}
-        //public CustomList Subtraction()
-        //{
-
-        //}
-        //public CustomList Zipper()
-        //{
-
-        //}
     }
 
 }

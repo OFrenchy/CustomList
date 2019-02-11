@@ -475,7 +475,7 @@ namespace CustomListTest
                 );
         }
 
-        //// Zipper test: two different list types = int, string???
+        //// Zipper test: two different list types = int, string - can't do this because Intellisense won't let you
         //// can't do this because Intellisense won't let you
         //[TestMethod]
         //public void Zipper_IntsStrings_ThrowsError()
@@ -502,6 +502,158 @@ namespace CustomListTest
         //        zippedList[8] == "i"
         //        );
         //}
+
+        // Addition operator overload Tests
+
+        [TestMethod]
+        // Addition Overload Testing
+        // adding two CustomList<int> of 3 items each
+        public void AdditionOverload_2ListsOf3Ints_CountEquals6()
+        {
+            // Arrange
+            int ExpectedResults = 6;
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+        [TestMethod]
+        // adding two CustomList<int> first list 3 items, second list 11 items
+        public void AdditionOverload_1stLists11Ints2ndList3Ints_CountEquals14()
+        {
+            // Arrange
+            int ExpectedResults = 14;
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 3 , 4,5,6,7,8,9,10,11};
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+        [TestMethod]
+        // adding two CustomList<int> first list 3 items, second list 11 items
+        public void AdditionOverload_1stLists11Ints2ndList3Ints_Item13Eq6()
+        {
+            // Arrange
+            int ExpectedResults = 6;
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.AreEqual(resultList[13], ExpectedResults);
+        }
+        [TestMethod]
+        // adding two CustomList<int> first list 3 items, second list 11 items
+        public void AdditionOverload_1stLists3Ints2ndList11Ints_Item13Eq14()
+        {
+            // Arrange
+            int ExpectedResults = 14;
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 3};
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6,7,8,9,10,11,12,13,14 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.AreEqual(resultList[13], ExpectedResults);
+        }
+
+
+        [TestMethod]
+        // adding two CustomList<int> first list 11 items, second list 3 items
+        public void AdditionOverload_1stLists3Ints2ndList11Ints_CountEquals14()
+        {
+            // Arrange
+            int ExpectedResults = 14;
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 ,7,8,9,10,11,12,13,14};
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+        [TestMethod]
+        // adding two CustomList<string> of 3 items each
+        public void AdditionOverload_2ListsOf3Strings_CountEquals6()
+        {
+            // Arrange
+            int ExpectedResults = 6;
+            CustomList<string> firstList = new CustomList<string>() { "a", "b", "c" };
+            CustomList<string> secondList = new CustomList<string>() { "d", "e", "f" };
+            CustomList<string> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+        [TestMethod]
+        // adding two CustomList<int> of 3 items each
+        public void AdditionOverload_2ListsOf3Ints_EachItemInCorrectLocation()
+        {
+            // Arrange
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 3 };
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.IsTrue(
+                resultList[0] == 1 &&
+                resultList[1] == 2 &&
+                resultList[2] == 3 &&
+                resultList[3] == 4 &&
+                resultList[4] == 5 &&
+                resultList[5] == 6
+                );
+        }
+        [TestMethod]
+        // adding two CustomList<strings> of 3 items each
+        public void AdditionOverload_2ListsOf3Strings_EachItemInCorrectLocation()
+        {
+            // Arrange
+            CustomList<string> firstList = new CustomList<string>() { "a", "b", "c" };
+            CustomList<string> secondList = new CustomList<string>() { "d", "e", "f" };
+            CustomList<string> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.IsTrue(
+                resultList[0] == "a" &&
+                resultList[1] == "b" &&
+                resultList[2] == "c" &&
+                resultList[3] == "d" &&
+                resultList[4] == "e" &&
+                resultList[5] == "f"
+                );
+        }
+        public void AdditionOverload_2Lists10Items_EachItemInCorrectLocation()
+        {
+            // Arrange
+            CustomList<string> firstList = new CustomList<string>() { "a", "b", "c" };
+            CustomList<string> secondList = new CustomList<string>() { "d", "e", "f" , "g", "h", "i","j"};
+            CustomList<string> resultList;
+            // Act
+            resultList = firstList + secondList;
+            // Assert
+            Assert.IsTrue(
+                resultList[0] == "a" &&
+                resultList[1] == "b" &&
+                resultList[2] == "c" &&
+                resultList[3] == "d" &&
+                resultList[4] == "e" &&
+                resultList[5] == "f" &&
+                resultList[6] == "g" &&
+                resultList[7] == "h" &&
+                resultList[8] == "i" &&
+                resultList[9] == "j"
+                );
+        }
 
 
     }
