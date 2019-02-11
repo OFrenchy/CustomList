@@ -1,0 +1,17 @@
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\obj\Debug\CustomListTest.csprojAssemblyReference.cache
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\obj\Debug\CustomListTest.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\CustomListTest.dll
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\CustomListTest.pdb
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\CustomList.exe
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\CustomList.pdb
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\CustomList.exe.config
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\obj\Debug\CustomListTest.csproj.CopyComplete
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\obj\Debug\CustomListTest.dll
+\\Mac\Home\Documents\devCodeCamp\Assignments\Wk_05_Day_4_CustomList\CustomList\CustomListTest\obj\Debug\CustomListTest.pdb

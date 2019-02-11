@@ -137,7 +137,7 @@ namespace CustomListTest
             // create the custom list
             int loopCount = 5;
             int result;
-            int resultExpected = loopCount;
+            int resultExpected = 3;
             CustomList<int> customList = new CustomList<int>();
             for (int i = 0; i < loopCount; i++)
             {
@@ -189,17 +189,36 @@ namespace CustomListTest
         //        stringList.Count);
         //}
 
-        //Index_NegativeValue_ReturnsAOORE
+        //
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Index_Negative1_ReturnsIOORE()
+        {
+            // Arrange
+            //Exception exception = new ArgumentOutOfRangeException();
+            // create the custom list
+            int index = -1;
+            int result;
+            CustomList<int> customList = new CustomList<int>();
+
+            // Act
+            result = customList[-1];
+
+            // Assert
+            //Assert.ThrowsException(ArgumentOutOfRangeException);//.AreEqual(result, resultExpected);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Index_Add5Remove2ReqIndex4_ReturnsAOORE()
         {
             // Arrange
-            Exception exception = new ArgumentOutOfRangeException();
+            //Exception exception = new ArgumentOutOfRangeException();
             // create the custom list
             int loopCount = 5;
+            int index = 4;
             int result;
-            int resultExpected = 4;
+
             CustomList<int> customList = new CustomList<int>();
 
             // Act
@@ -209,10 +228,10 @@ namespace CustomListTest
             }
             customList.Remove(2);
             customList.Remove(3);
-            result = customList[2];
+            result = customList[index];
 
             // Assert
-            Assert. .ThrowsException(exception);//.AreEqual(result, resultExpected);
+           // Assert.ThrowsException();//.AreEqual(result, resultExpected);
         }
 
     }

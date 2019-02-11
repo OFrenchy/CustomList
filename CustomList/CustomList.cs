@@ -31,7 +31,7 @@ namespace CustomListProject
                 return false;
             }
         }
-        
+
         // VALUE - SET & GET
         //•	When I have added 9 items, so there are theoretically 16 (0-15) spots,  
         //AND I TRY TO SET THE 15TH ITEM(realListStrings[15] = "abcd";) I GET “System.ArgumentOutOfRangeException”
@@ -58,10 +58,10 @@ namespace CustomListProject
                 arraySize = arraySize * 2;
                 T[] tempItems = new T[arraySize];
                 // copy the old array to the temp one
-                for (int i = 0; i < count; i++) {tempItems[i] = items[i]; }
+                for (int i = 0; i < count; i++) { tempItems[i] = items[i]; }
                 // re-create the original array, double size
                 items = new T[arraySize];
-                for (int i = 0; i < count; i++){items[i] = tempItems[i]; }
+                for (int i = 0; i < count; i++) { items[i] = tempItems[i]; }
                 // add the new item to the array
                 items[count] = item;
                 count++;
@@ -84,28 +84,32 @@ namespace CustomListProject
                     // TODO - use the inline if HERE, skipping i in the copy
                     for (int j = 0; j < i; j++) { tempItems[j] = items[j]; }
                     // now copy the remaining items AFTER i
-                    for (int j = i + 1; j < count; j++) {tempItems[j - 1] = items[j]; }
+                    for (int j = i + 1; j < count; j++) { tempItems[j - 1] = items[j]; }
 
                     // decrement count
                     count--;
                     // re-create the original array
                     items = new T[arraySize];
-                    for (i = 0; i < count; i++) {items[i] = tempItems[i]; }
+                    for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
                 }
             }
         }
-        public T GetItem(int index)
-        {
-            
-            return items[index];
-        }
+        // Obsolete by indexer
+        //public T GetItem(int index)
+        //{
+        //    return items[index];
+        //}
         public T this[int index]    // Indexer declaration  
         {
-            // check if out of bounds
+            // TODO - check if out of bounds
             // check for index < 0 or >= count
             // if given an index that's out of bounds, an error will occur
             // IndexOutOfRangeException Class , see https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception?view=netframework-4.7.2
 
+            //if (-1 < 0) 
+            //{
+            //   throw IndexOutOfRangeException() ;
+            //}
             // get and set accessors  
             get =>  items [index];
             set => items[index] = value;
@@ -148,16 +152,20 @@ namespace CustomListProject
             CustomList<T> newList = new CustomList<T>();
             int countSecondList = secondList.Count;
 
-            foreach (T in secondList)
-            {
-                newList.Add(items.MoveNext);
-                newList.Add(secondList.MoveNext);
-            }
-            
-            IEnumerator<T> enumerator = new IEnumerator<T>(secondList);
-            enumerator.MoveNext();
+            //??????? TODO
+            //foreach (T in secondList)
+            //{
+            //    newList.Add(items.MoveNext);
+            //    newList.Add(secondList.MoveNext);
+            //}
+
+            //???  TODO
+            //IEnumerator<T> enumerator = new IEnumerator<T>(secondList);
+            //enumerator.MoveNext();
+
+
+
             T[] tempArray = new T[count + secondList.Count] ;
-            
 
             // Set up new array of the size of both arrays
             int iLimit;
@@ -172,8 +180,8 @@ namespace CustomListProject
 
             for (int i = 0; i < iLimit; i++)
             {
-                tempArray.Add(items[i]);
-                tempArray.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
+                newList.Add(items[i]);
+                newList.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
             }
 
             // now add the rest of the longer list
@@ -181,20 +189,17 @@ namespace CustomListProject
             {
                 for (int i = iLimit; i < secondList.Count; i++)
                 {
-                    tempArray.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
+                    newList.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
                 }
             }
             else
             {
                 for (int i = iLimit; i < iLimit ; i++)
                 {
-                    tempArray.Add(items[i]);
+                    newList.Add(items[i]);
                 }
             }
-
-
-
-            return tempArray;
+            return newList;
         }
 
         //public CustomList Iterator()
