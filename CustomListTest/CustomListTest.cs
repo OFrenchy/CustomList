@@ -12,13 +12,9 @@ namespace CustomListTest
     public class CustomListTest
     {
         [TestMethod]
-        // use this if the test is expecting an exception is out of range
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Count_Instantiated_Returns0()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int result;
             int resultExpected = 0;
             CustomList<int> customList = new CustomList<int>();
@@ -32,13 +28,9 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        // use this if the test is expecting an exception is out of range
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Add_Oneitem_Returns1()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int result;
             int resultExpected = 1;
             CustomList<int> customList = new CustomList<int>();
@@ -51,13 +43,9 @@ namespace CustomListTest
             Assert.AreEqual(result, resultExpected);
         }
         [TestMethod]
-        // use this if the test is expecting an exception is out of range
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Count_Oneitem_Returns1()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int result;
             int resultExpected = 1;
             CustomList<int> customList = new CustomList<int>();
@@ -69,33 +57,11 @@ namespace CustomListTest
             // Assert
             Assert.AreEqual(result, resultExpected);
         }
-        //[TestMethod]
-        //// use this if the test is expecting an exception is out of range
-        ////[ExpectedException(typeof(ArgumentOutOfRangeException))]
-        //public void Index_Index0Oneitem_Returns123()
-        //{
-        //    // Arrange
-        //    //Exception exception = new ArgumentOutOfRangeException();
-        //    // create the custom list
-        //    int i = 0;
-        //    int result;
-        //    int resultExpected = 1;
-        //    CustomList<int> customList = new CustomList<int>();
-        //    customList.Add(123);
-
-        //    // Act
-        //    result = customList[i]; //?? 
-
-        //    // Assert
-        //    Assert.AreEqual(result, resultExpected);
-        //}
+       
         [TestMethod]
-        // use this if the test is expecting an exception is out of range
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Count_twoitems_Returns2()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
             // create the custom list
             int result;
             int resultExpected = 2;
@@ -108,13 +74,9 @@ namespace CustomListTest
             Assert.AreEqual(result, resultExpected);
         }
         [TestMethod]
-        // use this if the test is expecting an exception is out of range
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Count_5items_Returns5()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int loopCount = 5;
             int result;
             int resultExpected = loopCount;
@@ -129,12 +91,9 @@ namespace CustomListTest
             Assert.AreEqual(result, resultExpected);
         }
         [TestMethod]
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Count_Add5Remove2_Returns3()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int loopCount = 5;
             int result;
             int resultExpected = 3;
@@ -155,8 +114,6 @@ namespace CustomListTest
         public void Index_Add5Remove2_Index3Returns4()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int loopCount = 5;
             int result;
             int resultExpected = 4;
@@ -175,50 +132,29 @@ namespace CustomListTest
             Assert.AreEqual(result, resultExpected);
         }
 
-        // TODO - GetItem needs to be changed to be brackets, not () above;
-        // after that, write a test to test for out-of-bounds 
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
-        //Exception exception = new ArgumentOutOfRangeException();
-        //try
-        //{
-        //    stringList[stringList.Count] = "42";
-        //}
-        //catch(ArgumentOutOfRangeException aoore)
-        //{
-        //    Console.WriteLine("stringList({0}) is out of range.", 
-        //        stringList.Count);
-        //}
-
-        //
         [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Index_Negative1_ReturnsIOORE()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int index = -1;
             int result;
             CustomList<int> customList = new CustomList<int>();
 
             // Act
-            result = customList[-1];
+            result = customList[index];
 
             // Assert
-            //Assert.ThrowsException(ArgumentOutOfRangeException);//.AreEqual(result, resultExpected);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Index_Add5Remove2ReqIndex4_ReturnsAOORE()
         {
             // Arrange
-            //Exception exception = new ArgumentOutOfRangeException();
-            // create the custom list
             int loopCount = 5;
             int index = 4;
             int result;
-
             CustomList<int> customList = new CustomList<int>();
 
             // Act
@@ -231,8 +167,15 @@ namespace CustomListTest
             result = customList[index];
 
             // Assert
-            // Assert.ThrowsException();//.AreEqual(result, resultExpected);
         }
+
+        // TODO - Zipper tests
+        //      first list longer than second;  
+        //      second list longer than 1st
+        //      first list empty
+        //      second list empty
+        //      two different list types = int, string???
+
 
     }
 }

@@ -113,8 +113,9 @@ namespace CustomListProject
                 }
                 else
                 {
+                    // 
                     // this code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
-                    ArgumentException argEx = new ArgumentException("Index is out of range", "index");
+                    ArgumentException argEx = new ArgumentOutOfRangeException("Index is out of range", "index");
                     throw argEx;
                 }
             }
@@ -127,31 +128,41 @@ namespace CustomListProject
                 else
                 {
                     // this code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
-                    ArgumentException argEx = new ArgumentException("Index is out of range", "index");
+                    ArgumentException argEx = new ArgumentOutOfRangeException("Index is out of range", "index");
                     throw argEx;
                 }
             }
         }
-
-
-    // remove nth item, or find this item & remove it??
 
     public override string ToString ()
         {
             return "";
         }
         
-        public IEnumerator GetEnumerator()
+        public IEnumerator GetEnumerator()  // ?????? TODO - This is what is used by the Foreach loop,???
         {
             for (int i = 0; i < count; i++)
             {
                 yield return items[i];
             }
-            // TODO - what to return when done for list>? what does this need to return?  
+            // TODO ????? what to yield return when at the end???? what does this need to return?  
             // It won't take a T...
             yield return items[0]; 
         }
-        
+        // TODO ??????  how do I expose the MoveNext method of the iterator, so that I can
+        // use secondList.MoveNext() in the zipper conscruction? ????
+        public IEnumerator MoveNext()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+            MoveNext();
+            // TODO - what to return when done for list>? what does this need to return?  
+            // It won't take a T...
+            yield return items[0];
+        }
+
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
             // add this test to the test cases - 
@@ -196,6 +207,7 @@ namespace CustomListProject
             {
                 newList.Add(items[i]);
                 newList.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
+                //newList.Add(secondList.MoveNext())
             }
 
             // now add the rest of the longer list
