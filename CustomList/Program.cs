@@ -10,7 +10,12 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
-            CustomList<int> customList = new CustomList<int>();
+
+            //List<int> realListInts = new List<int>() { 0, 1, 2, 3 };
+            //realListInts.Add(0);
+
+
+            CustomList<int> customList = new CustomList<int>() { 0, 1, 2, 3 };
             //customList.Count();
             Console.WriteLine(customList.Count) ;
             customList.Add(0);

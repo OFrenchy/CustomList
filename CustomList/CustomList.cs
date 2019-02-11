@@ -12,14 +12,15 @@ namespace CustomListProject
         // class members
         private int arraySize = 4;
         private T[] items;
-        private int count = 0;
+        private int count = 0;//-1;
 
         // constructor = new
-        public CustomList()
+        public CustomList() 
         {
-            items = new T[4];
+            items = new T[arraySize];
         }
-
+        
+        // methods
         private bool isFull()
         {
             if (arraySize == count)
@@ -31,13 +32,6 @@ namespace CustomListProject
                 return false;
             }
         }
-
-        // VALUE - SET & GET
-        //•	When I have added 9 items, so there are theoretically 16 (0-15) spots,  
-        //AND I TRY TO SET THE 15TH ITEM(realListStrings[15] = "abcd";) I GET “System.ArgumentOutOfRangeException”
-        // Exception.IndexOutOfRangeException
-
-        // methods
         public int Count
         {
             get => count;
@@ -82,16 +76,16 @@ namespace CustomListProject
                     // create new array
                     T[] tempItems = new T[arraySize];
                     // copy the from the old array up to the found item (at i)
-                    // TODO - use the inline if HERE, skipping i in the copy
+                    // TODO - when time allows, use the inline if HERE, skipping i in the copy
                     for (int j = 0; j < i; j++) { tempItems[j] = items[j]; }
                     // now copy the remaining items AFTER i
                     for (int j = i + 1; j < count; j++) { tempItems[j - 1] = items[j]; }
 
                     // decrement count
                     count--;
-                    // re-create the original array
+                    // re-create the original array - TODO - ??????  use enumerator
                     items = new T[arraySize];
-                    for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
+                   for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
                 }
             }
         }
@@ -113,7 +107,6 @@ namespace CustomListProject
                 }
                 else
                 {
-                    // 
                     // this code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
                     ArgumentException argEx = new ArgumentOutOfRangeException("Index is out of range", "index");
                     throw argEx;
@@ -133,63 +126,21 @@ namespace CustomListProject
                 }
             }
         }
-
-    public override string ToString ()
-        {
-            return "";
-        }
-        
-        public IEnumerator GetEnumerator()  // ?????? TODO - This is what is used by the Foreach loop,???
+        public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < count; i++)
             {
                 yield return items[i];
             }
-            // TODO ????? what to yield return when at the end???? what does this need to return?  
-            // It won't take a T...
-            yield return items[0]; 
         }
-        // TODO ??????  how do I expose the MoveNext method of the iterator, so that I can
-        // use secondList.MoveNext() in the zipper conscruction? ????
-        public IEnumerator MoveNext()
-        {
-            for (int i = 0; i < count; i++)
-            {
-                yield return items[i];
-            }
-            MoveNext();
-            // TODO - what to return when done for list>? what does this need to return?  
-            // It won't take a T...
-            yield return items[0];
-        }
-
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
-            // add this test to the test cases - 
-            //      first list longer than second;  
-            //      second list longer than 1st
-            //      first list empty
-            //      second list empty
-            //      two different list types = int, string???
             // TODO - should be allow the user to zip lists that are of different lengths?
             // if yes, we can't use foreach
             // Because these are custom lists, we CAN use its Count methods
             CustomList<T> newList = new CustomList<T>();
+
             int countSecondList = secondList.Count;
-
-            //??????? TODO
-            //foreach (T in secondList)
-            //{
-            //    newList.Add(items.MoveNext);
-            //    newList.Add(secondList.MoveNext);
-            //}
-
-            //???  TODO
-            //IEnumerator<T> enumerator = new IEnumerator<T>(secondList);
-            //enumerator.MoveNext();
-
-
-
             T[] tempArray = new T[count + secondList.Count] ;
 
             // Set up new array of the size of both arrays
@@ -206,7 +157,7 @@ namespace CustomListProject
             for (int i = 0; i < iLimit; i++)
             {
                 newList.Add(items[i]);
-                newList.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
+                newList.Add(secondList[i]);
                 //newList.Add(secondList.MoveNext())
             }
 
@@ -215,7 +166,8 @@ namespace CustomListProject
             {
                 for (int i = iLimit; i < secondList.Count; i++)
                 {
-                    newList.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
+                    newList.Add(secondList[i]);
+                    // ???? use movenext
                 }
             }
             else
@@ -223,9 +175,14 @@ namespace CustomListProject
                 for (int i = iLimit; i < iLimit ; i++)
                 {
                     newList.Add(items[i]);
+                    // ???? use movenext
                 }
             }
             return newList;
+        }
+        public override string ToString()
+        {
+            return "";
         }
 
         //public CustomList Iterator()

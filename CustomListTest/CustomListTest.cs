@@ -168,13 +168,86 @@ namespace CustomListTest
 
             // Assert
         }
+        
+        //      Zipper test: first list  1,2,3 second list 2,4,6 result = 1,2,3,4,5,6
+        [TestMethod]
+        public void Zipper_3IntsEachSide_ZipsCorrectly()
+        {
+            // Arrange
+            CustomList<int> firstList = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> secondList = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> zippedList;
+            // Act
+            zippedList = firstList.Zipper(secondList);
+
+            // Assert
+            Assert.IsTrue(
+                zippedList[0] == 1 &&
+                zippedList[1] == 2 &&
+                zippedList[2] == 3 &&
+                zippedList[3] == 4 &&
+                zippedList[4] == 5 &&
+                zippedList[5] == 6
+                );
+        }
+        
+        //      Zipper test: first list  a,c,e second list b,d,f result = a,b,c,d,e,f
+        public void Zipper_3StringsEachSide_ZipsCorrectly()
+        {
+            // Arrange
+            CustomList<string> firstList = new CustomList<string>() { "a","c","e" };
+            CustomList<string> secondList = new CustomList<string>() { "b","d","f" };
+            CustomList<string> zippedList;
+            // Act
+            zippedList = firstList.Zipper(secondList);
+
+            // Assert
+            Assert.IsTrue(
+                zippedList[0] == "a" &&
+                zippedList[1] == "b" &&
+                zippedList[2] == "c" &&
+                zippedList[3] == "d" &&
+                zippedList[4] == "e" &&
+                zippedList[5] == "f"
+                );
+        }
+
+        // Zipper test: first list ints longer than second
+        public void Zipper_3IntsEachSide_ZipsCorrectly()
+        {
+            // Arrange
+            CustomList<int> firstList = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> secondList = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> zippedList;
+            // Act
+            zippedList = firstList.Zipper(secondList);
+
+            // Assert
+            Assert.IsTrue(
+                zippedList[0] == 1 &&
+                zippedList[1] == 2 &&
+                zippedList[2] == 3 &&
+                zippedList[3] == 4 &&
+                zippedList[4] == 5 &&
+                zippedList[5] == 6
+                );
+        }
+
+        // Zipper test: second list ints longer than 1st
+
+
+        // Zipper test: first list strings longer than second
+
+
+        // Zipper test: second list strings longer than 1st
+
 
         // TODO - Zipper tests
-        //      first list longer than second;  
-        //      second list longer than 1st
-        //      first list empty
-        //      second list empty
-        //      two different list types = int, string???
+        //      ;  
+        //      
+        //      Zipper test: first list empty
+        //      Zipper test: second list empty
+        //      Zipper test: two different list types = int, string???
 
 
     }
