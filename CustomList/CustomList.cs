@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         // class members
         private int arraySize = 4;
@@ -18,6 +19,7 @@ namespace CustomListProject
         {
             items = new T[4];
         }
+
         private bool isFull()
         {
             if (arraySize == count)
@@ -94,21 +96,106 @@ namespace CustomListProject
         }
         public T GetItem(int index)
         {
-            // if given a index that's out of bounds, an error will occur
+            
             return items[index];
         }
+        public T this[int index]    // Indexer declaration  
+        {
+            // check if out of bounds
+            // check for index < 0 or >= count
+            // if given an index that's out of bounds, an error will occur
+            // IndexOutOfRangeException Class , see https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception?view=netframework-4.7.2
+
+            // get and set accessors  
+            get =>  items [index];
+            set => items[index] = value;
+        }
+
+
         //?? public T GetValue(int index)
         //{
         //    return items[index].;
         //}
         // remove nth item, or find this item & remove it??
-        
+
         public override string ToString ()
         {
-
             return "";
         }
+        
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+            // TODO - what to return when done for list>? what does this need to return?  
+            // It won't take a T...
+            yield return items[0]; 
+        }
+        
+        public CustomList<T> Zipper(CustomList<T> secondList)
+        {
+            // add this test to the test cases - 
+            //      first list longer than second;  
+            //      second list longer than 1st
+            //      first list empty
+            //      second list empty
+            //      two different list types = int, string???
+            // TODO - should be allow the user to zip lists that are of different lengths?
+            // if yes, we can't use foreach
+            // Because these are custom lists, we CAN use its Count methods
+            CustomList<T> newList = new CustomList<T>();
+            int countSecondList = secondList.Count;
 
+            foreach (T in secondList)
+            {
+                newList.Add(items.MoveNext);
+                newList.Add(secondList.MoveNext);
+            }
+            
+            IEnumerator<T> enumerator = new IEnumerator<T>(secondList);
+            enumerator.MoveNext();
+            T[] tempArray = new T[count + secondList.Count] ;
+            
+
+            // Set up new array of the size of both arrays
+            int iLimit;
+            if (count < secondList.Count)
+            {
+                iLimit = count;
+            }
+            else
+            {
+                iLimit = secondList.Count;
+            }
+
+            for (int i = 0; i < iLimit; i++)
+            {
+                tempArray.Add(items[i]);
+                tempArray.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
+            }
+
+            // now add the rest of the longer list
+            if (count < secondList.Count)
+            {
+                for (int i = iLimit; i < secondList.Count; i++)
+                {
+                    tempArray.Add(secondList[i]); // <---TODO - get the "item" notation working for CustomList
+                }
+            }
+            else
+            {
+                for (int i = iLimit; i < iLimit ; i++)
+                {
+                    tempArray.Add(items[i]);
+                }
+            }
+
+
+
+            return tempArray;
+        }
 
         //public CustomList Iterator()
         //{
@@ -127,5 +214,5 @@ namespace CustomListProject
 
         //}
     }
-    
+
 }

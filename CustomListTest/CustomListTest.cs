@@ -152,7 +152,7 @@ namespace CustomListTest
         }
         [TestMethod]
         //[ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void Item_Add5Remove2_Returns3()
+        public void Index_Add5Remove2_Index3Returns4()
         {
             // Arrange
             //Exception exception = new ArgumentOutOfRangeException();
@@ -169,14 +169,9 @@ namespace CustomListTest
             }
             customList.Remove(2);
             customList.Remove(3);
-            // TODO - change to use brackets, make default???
-            result = customList.GetItem(2);
-
-            // ENABLE THIS WHEN I CAN:
-            // result = customList[2];
+            result = customList[2];
 
             // Assert
-            // ENABLE THIS WHEN I CAN:
             Assert.AreEqual(result, resultExpected);
         }
 
@@ -184,7 +179,41 @@ namespace CustomListTest
         // after that, write a test to test for out-of-bounds 
         //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         //Exception exception = new ArgumentOutOfRangeException();
+        //try
+        //{
+        //    stringList[stringList.Count] = "42";
+        //}
+        //catch(ArgumentOutOfRangeException aoore)
+        //{
+        //    Console.WriteLine("stringList({0}) is out of range.", 
+        //        stringList.Count);
+        //}
 
+        //Index_NegativeValue_ReturnsAOORE
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Index_Add5Remove2ReqIndex4_ReturnsAOORE()
+        {
+            // Arrange
+            Exception exception = new ArgumentOutOfRangeException();
+            // create the custom list
+            int loopCount = 5;
+            int result;
+            int resultExpected = 4;
+            CustomList<int> customList = new CustomList<int>();
+
+            // Act
+            for (int i = 0; i < loopCount; i++)
+            {
+                customList.Add(i);
+            }
+            customList.Remove(2);
+            customList.Remove(3);
+            result = customList[2];
+
+            // Assert
+            Assert. .ThrowsException(exception);//.AreEqual(result, resultExpected);
+        }
 
     }
 }

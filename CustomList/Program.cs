@@ -18,6 +18,8 @@ namespace CustomListProject
             customList.Add(2);
             customList.Add(3);
             customList.Add(4);
+            Console.WriteLine(customList[2];);
+            Console.WriteLine(customList.GetItem(2););
             Console.WriteLine(customList.Count);
 
             customList.Remove(2) ;
