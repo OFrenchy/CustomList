@@ -10,13 +10,16 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
-            CustomList<string> firstList = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
+            //CustomList<string> firstList = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
+            //firstList.Sort();
+            //foreach (string thisString in firstList)
+            //{
+            //    Console.WriteLine(thisString);
+            //}
 
+            CustomList<int> firstList = new CustomList<int>() { 199, };
             firstList.Sort();
-            foreach (string thisString in firstList)
-            {
-                Console.WriteLine(thisString);
-            }
+
 
             Console.WriteLine("");
 

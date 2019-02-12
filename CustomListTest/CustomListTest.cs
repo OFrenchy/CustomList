@@ -755,10 +755,10 @@ namespace CustomListTest
                 );
         }
         [TestMethod]
-        public void Sort_4Ints_SortedProperly()
+        public void Sort_2StringsInOrder_SortedProperly()
         {
             // Arrange
-            CustomList<int> customList = new CustomList<int>() { 199, 99,104, 77};
+            CustomList<string> customList = new CustomList<string>() { "a", "z" };
 
 
             // Act
@@ -766,11 +766,70 @@ namespace CustomListTest
 
             // Assert         //a a A d h r w y y z
             Assert.IsTrue(
+                customList[0] == "a" &&
+                customList[1] == "z"
+                );
+        }
+        [TestMethod]
+        public void Sort_2StringsOutOfOrder_SortedProperly()
+        {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>() { "r", "a" };
+
+
+            // Act
+            customList.Sort();
+
+            // Assert         //a a A d h r w y y z
+            Assert.IsTrue(
+                customList[0] == "a" &&
+                customList[1] == "r"
+                );
+        }
+
+
+
+
+
+        [TestMethod]
+        public void Sort_4Ints_SortedProperly()
+        {
+            // Arrange
+            CustomList<int> customList = new CustomList<int>() { 199, 99,104, 77};
+
+            // Act
+            customList.Sort();
+
+            // Assert         
+            Assert.IsTrue(
                 customList[0] == 77 &&
                 customList[1] == 99 &&
                 customList[2] == 104 &&
                 customList[3] == 199
                 );
         }
+
+        //System.NullReferenceException'
+        [TestMethod]
+        //[ExpectedException(typeof(NullReferenceException))]
+        public void Sort_1Int1Null_ThrowsNullReferenceException()
+        {
+            // Arrange
+            CustomList<int> customList = new CustomList<int>() { 199,  };
+
+            // Act
+            customList.Sort();
+
+            // Assert         
+            Assert.IsTrue(
+                customList[0] == 0 &&
+                customList[1] == 199
+                );
+        }
+
+
+
+
+
     }
 }
