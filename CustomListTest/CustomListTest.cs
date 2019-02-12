@@ -731,11 +731,49 @@ namespace CustomListTest
         }
 
         [TestMethod]
+        // ToString Overload Testing 
+        // ToString Ints Empty List
+        public void ToStringOverload_IntsListEmpty_ReturnsEmptyString()
+        {
+            // Arrange
+            CustomList<int> firstList = new CustomList<int>();
+            string results;
+            string resultsExpected = "";
+
+            // Act
+            results = firstList.ToString();
+
+            // Assert
+            Assert.AreEqual(results, resultsExpected);
+        }
+        [TestMethod]
+        // ToString Overload Testing 
+        // ToString String Empty List
+        public void ToStringOverload_StringListEmpty_ReturnsEmptyString()
+        {
+            // Arrange
+            CustomList<string> firstList = new CustomList<string>() ;
+            string results;
+            string resultsExpected = "";
+
+            // Act
+            results = firstList.ToString();
+
+            // Assert
+            Assert.AreEqual(results, resultsExpected);
+        }
+
+
+
+
+
+
+
+        [TestMethod]
         public void Sort_9Strings_SortedProperly()
         {
             // Arrange
             CustomList<string> customList = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
-
 
             // Act
             customList.Sort();
@@ -755,11 +793,10 @@ namespace CustomListTest
                 );
         }
         [TestMethod]
-        public void Sort_2StringsInOrder_SortedProperly()
+        public void Sort_2StringsInOrder_Returns2Strings()
         {
             // Arrange
             CustomList<string> customList = new CustomList<string>() { "a", "z" };
-
 
             // Act
             customList.Sort();
@@ -775,8 +812,7 @@ namespace CustomListTest
         {
             // Arrange
             CustomList<string> customList = new CustomList<string>() { "r", "a" };
-
-
+            
             // Act
             customList.Sort();
 
@@ -784,6 +820,20 @@ namespace CustomListTest
             Assert.IsTrue(
                 customList[0] == "a" &&
                 customList[1] == "r"
+                );
+        }
+        [TestMethod]
+        public void Sort_1Strings_Returns1String()
+        {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>() { "z" };
+            
+            // Act
+            customList.Sort();
+
+            // Assert         //a a A d h r w y y z
+            Assert.IsTrue(
+                customList[0] == "z"
                 );
         }
 

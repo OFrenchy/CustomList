@@ -39,7 +39,8 @@ using System.Threading.Tasks;
 // Additional user stories by "author"
 // - Because there is no user story that requires the shrinkage of the array after removing items, 
 //      I will not concern myself with making the array smaller.
-
+// - Because the ToString user story does not specify what delimiter to use, I will use 
+//      a space " " to delimit.  I 
 
 namespace CustomListProject
 {
@@ -256,11 +257,16 @@ namespace CustomListProject
             }
             return firstList;
         }
-        public override string ToString()
+        public override string ToString ()      //(string delimiter = ",")
         {
-            return "";
+            string output = "";
+            foreach (T thisItem in items)
+            {
+                output = output + thisItem.ToString() + " ";
+            }
+            return output.Trim();
         }
-
+        
         public int IndexOf(T item)
         {
             int i;
