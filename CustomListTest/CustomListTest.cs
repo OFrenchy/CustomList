@@ -909,9 +909,6 @@ namespace CustomListTest
         }
 
 
-
-
-
         [TestMethod]
         public void Sort_4Ints_SortedProperly()
         {
@@ -933,21 +930,37 @@ namespace CustomListTest
         //System.NullReferenceException'
         [TestMethod]
         //[ExpectedException(typeof(NullReferenceException))]
-        public void Sort_1Int1Null_ThrowsNullReferenceException()
+        public void Sort_1String1Null_Count1()
         {
             // Arrange
-            CustomList<int> customList = new CustomList<int>() { 199,  };
+            CustomList<string> customList = new CustomList<string>() { "199", null };
 
             // Act
             customList.Sort();
 
             // Assert         
             Assert.IsTrue(
-                customList[0] == 0 &&
-                customList[1] == 199
+                customList[0] == "199" &&
+                customList.Count == 1
                 );
         }
+        //System.NullReferenceException'
+        [TestMethod]
+        //[ExpectedException(typeof(NullReferenceException))]
+        public void Sort_1Null1String_Count1()
+        {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>() { null, "199" };
 
+            // Act
+            customList.Sort();
+
+            // Assert         
+            Assert.IsTrue(
+                customList[0] == "199" &&
+                customList.Count == 1
+                );
+        }
 
 
 

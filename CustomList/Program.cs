@@ -10,6 +10,34 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>() {  "199", null };
+
+            // Act
+            customList.Sort();
+            Console.WriteLine(customList[0] == "199");
+            Console.WriteLine(customList.Count == 1);
+            
+
+
+            CustomList<int> customListInts = new CustomList<int>() { 199, 99, 104, 77 };
+            customListInts.Sort();
+            Console.WriteLine(customListInts.ToString());
+
+            CustomList<double> customListDoubles = new CustomList<double>() { 199.5, 99, 104, 199.7, 77 };
+            customListDoubles.Sort();
+            Console.WriteLine(customListDoubles.ToString());
+
+
+            CustomList<string> customListStrings = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
+            customListStrings.Sort();
+            Console.WriteLine(customListStrings.ToString());
+
+
+            Console.WriteLine();
+
+
+
             //CustomList<string> firstList = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
             //firstList.Sort();
             //foreach (string thisString in firstList)
@@ -73,20 +101,20 @@ namespace CustomListProject
             //realListInts.Add(0);
 
 
-            CustomList<int> customList = new CustomList<int>() { 0, 1, 2, 3 };
-            //customList.Count();
-            Console.WriteLine(customList.Count) ;
-            customList.Add(0);
-            customList.Add(1);
-            customList.Add(2);
-            customList.Add(3);
-            customList.Add(4);
-            Console.WriteLine(customList[2]);
-            Console.WriteLine(customList.Count);
+            //CustomList<int> customList = new CustomList<int>() { 0, 1, 2, 3 };
+            ////customList.Count();
+            //Console.WriteLine(customList.Count) ;
+            //customList.Add(0);
+            //customList.Add(1);
+            //customList.Add(2);
+            //customList.Add(3);
+            //customList.Add(4);
+            //Console.WriteLine(customList[2]);
+            //Console.WriteLine(customList.Count);
 
-            customList.Remove(2) ;
-            customList.Remove(3);
-            //Console.WriteLine(customList.GetItem(2));
+            //customList.Remove(2) ;
+            //customList.Remove(3);
+            ////Console.WriteLine(customList.GetItem(2));
 
 
             //List<int> realListInts = new List<int>();
@@ -129,9 +157,9 @@ namespace CustomListProject
 
             //CustomList<int> customList = new CustomList<int>();
 
-            Console.WriteLine(customList.ToString());
-            // prints CustomListProject.CustomList`1[System.Int32]
-            Console.WriteLine("stop here");
+            //Console.WriteLine(customList.ToString());
+            //// prints CustomListProject.CustomList`1[System.Int32]
+            //Console.WriteLine("stop here");
 
 
 

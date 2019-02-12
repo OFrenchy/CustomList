@@ -75,6 +75,11 @@ namespace CustomListProject
         }
         public void Add(T item)
         {
+            if (item == null)
+            {
+                return;
+            }
+            
             // if there is room, add it to the array
             if (!isFull())
             {
@@ -260,7 +265,7 @@ namespace CustomListProject
         public override string ToString ()      //(string delimiter = ",") // tried this, didn't work
         {
             string output = "";
-            //foreach (T thisItem in items)   // this doesn't work;  there are 4 spots in the array at instantiation;  ints are instantiated at 0
+            //foreach (T thisItem in items)// in items)   // this doesn't work;  there are 4 spots in the array at instantiation;  ints are instantiated at 0
             //{
             //    output = output + thisItem.ToString() + " ";
             //}
@@ -286,61 +291,133 @@ namespace CustomListProject
             return index;
         }
 
-        public void Sort()
+        //public void Sort() // strings
+        //{
+        //    // if there's 0 or 1 items, skip it
+        //    if (count <= 1)
+        //    {
+        //        return;
+        //    }
+        //    bool swappedValues = false;
+        //    do
+        //    {
+        //        // This may not be the most efficient method of sorting, 
+        //        // but if there was any serious amount of data to sort, 
+        //        // it would be done in a database
+        //        swappedValues = false;
+        //        for (int i = 1; i < count; i++)
+        //        {
+        //            //IComparable<T>;
+
+        //            //if ( items[i - 1].ToString() > items[i].ToString()  )
+        //            //IComparer Compare(items[i - 1].ToString(), items[i].ToString());
+        //            //StringComparer stringComparer = new StringComparison
+        //            //IComparer Compare(items[i - 1], items[i])
+        //            //IComparer comparer;
+        //            //Console.WriteLine(sortTsAscending(items[i - 1], items[i]).Equals(1) );
+        //            //if (sortTsAscending(items[i - 1], items[i]) > 0)
+
+        //            //string type = typeof(items[i])
+
+        //            //sortTsAscending(items[i - 1], items[i]).Equals(1)
+
+        //            //Console.WriteLine(items[i - 1].ToString() + ", " + items[i].ToString() + ", " + sortTsAscending(items[i - 1], items[i]).Equals(1) );
+        //            //int result = sortTsAscending(items[i - 1], items[i]);
+
+        //            // This satisfies the compiler, 
+        //            // but only works for strings, not for numbers of any 'sort'.  :-(
+        //            if (sortTsAscending(items[i - 1], items[i]) == 1)
+        //            {
+        //                T holdThis;
+        //                holdThis = items[i - 1];                    // "r", "a", "z", "d" , "y", "y", "a" 
+        //                items[i - 1] = items[i];
+        //                items[i] = holdThis;
+        //                swappedValues = true;
+        //            }
+        //        }
+        //    }
+        //    while (swappedValues == true);
+        //}
+
+        private  void SwapValues(int i, int j)
+        {
+            T holdThis;
+            holdThis = items[j];                    // "r", "a", "z", "d" , "y", "y", "a" 
+            items[j] = items[i];
+            items[i] = holdThis;
+            
+        }
+        public void Sort() // ints
         {
             // if there's 0 or 1 items, skip it
             if (count <= 1)
             {
                 return;
             }
-
             bool swappedValues = false;
+            bool dataIsNumeric = false;
+            string thisType = items[0].GetType().ToString();
+            bool dataIsString = false;
+            if (thisType.IndexOf("String") > 0)
+            {
+                dataIsString = true;
+            }
+            else if ( 
+                        thisType.IndexOf("Int") > 0 ||
+                        thisType.IndexOf("Double") > 0 ||
+                        thisType.IndexOf("Decimal") > 0 ||
+                        thisType.IndexOf("Single") > 0
+                    )
+            {
+                dataIsNumeric = true;
+            }
             do
             {
+                //Console.WriteLine( thisType);
+                //if (thisType.IndexOf("Int") > 0)    // System.Int32
+                //{
+                //    Console.WriteLine("Int in " + thisType);
+                //}
+                //else if (thisType.IndexOf("String") > 0)    // System.String
+                //{
+                //    Console.WriteLine("Int in " + thisType);
+                //}
+                //Console.WriteLine();
+                
                 // This may not be the most efficient method of sorting, 
                 // but if there was any serious amount of data to sort, 
                 // it would be done in a database
                 swappedValues = false;
                 for (int i = 1; i < count; i++)
                 {
-                    //IComparable<T>;
-
-                    //if ( items[i - 1].ToString() > items[i].ToString()  )
-                    //IComparer Compare(items[i - 1].ToString(), items[i].ToString());
-                    //StringComparer stringComparer = new StringComparison
-                    //IComparer Compare(items[i - 1], items[i])
-                    //IComparer comparer;
-                    //Console.WriteLine(sortTsAscending(items[i - 1], items[i]).Equals(1) );
-                    //if (sortTsAscending(items[i - 1], items[i]) > 0)
-
-                    //string type = typeof(items[i])
-
-                    //sortTsAscending(items[i - 1], items[i]).Equals(1)
-
-                    //Console.WriteLine(items[i - 1].ToString() + ", " + items[i].ToString() + ", " + sortTsAscending(items[i - 1], items[i]).Equals(1) );
-                    //int result = sortTsAscending(items[i - 1], items[i]);
-
-                    // This satisfies the compiler, 
-                    // but only works for strings, not for numbers of any 'sort'.  :-(
-                    if (sortTsAscending(items[i - 1], items[i]) == 1)
+                    if (dataIsNumeric)
                     {
-                        T holdThis;
-                        holdThis = items[i - 1];                    // "r", "a", "z", "d" , "y", "y", "a" 
-                        items[i - 1] = items[i];
-                        items[i] = holdThis;
-                        swappedValues = true;
+                        if (Convert.ToDouble(items[i - 1]) > Convert.ToDouble(items[i]))
+                        {
+                            SwapValues(i - 1, i);
+                            swappedValues = true;
+                        }
+                    }
+                    else if  (dataIsString)
+                    {
+                        // This satisfies the compiler, 
+                        // but only works for strings, not for numbers of any 'sort'.  :-(
+                        if (sortTsAscending(items[i - 1], items[i]) == 1)
+                        {
+                            SwapValues(i - 1, i);
+                            swappedValues = true;
+                        }
                     }
                 }
             }
             while (swappedValues == true);
         }
-        
-        //int IComparer.Compare(object firstItem, object secondItem)
-        //{
-        //    Console.WriteLine(String.Compare(firstItem.ToString(), secondItem.ToString()));
-        //    return String.Compare(firstItem.ToString(), secondItem.ToString());
-        //}
-        public static int sortTsAscending(T firstItem, T secondItem)
+
+
+
+
+
+        private static int sortTsAscending(T firstItem, T secondItem)
         {
             IComparer comparer = (IComparer)new sortTsAscending();
             return comparer.Compare(firstItem, secondItem);
