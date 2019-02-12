@@ -17,11 +17,17 @@ namespace CustomListProject
             //    Console.WriteLine(thisString);
             //}
 
-            CustomList<int> firstList = new CustomList<int>() { 199, };
-            firstList.Sort();
-
-
+            CustomList<string> firstList = new CustomList<string>() { "ace", "charlie", "e", "b", "yoyo" };
+            string results;
+            string resultsExpected = "ace charlie e b yoyo";
+            results = firstList.ToString();
+            Console.WriteLine("'" + results + "'");
             Console.WriteLine("");
+
+
+            //CustomList<int> firstList = new CustomList<int>() { 199, };
+            //firstList.Sort();
+            //Console.WriteLine("");
 
             //CustomList<int> firstList = new CustomList<int>() { };
             //CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };

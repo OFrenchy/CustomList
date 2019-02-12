@@ -747,7 +747,6 @@ namespace CustomListTest
             Assert.AreEqual(results, resultsExpected);
         }
         [TestMethod]
-        // ToString Overload Testing 
         // ToString String Empty List
         public void ToStringOverload_StringListEmpty_ReturnsEmptyString()
         {
@@ -762,10 +761,82 @@ namespace CustomListTest
             // Assert
             Assert.AreEqual(results, resultsExpected);
         }
+        [TestMethod]
+        // ToString String 1 item List
+        public void ToStringOverload_1String_ReturnsItemAsString()
+        {
+            // Arrange
+            CustomList<string> firstList = new CustomList<string>() { "a" };
+            string results;
+            string resultsExpected = "a";
 
+            // Act
+            results = firstList.ToString();
 
+            // Assert
+            Assert.AreEqual(results, resultsExpected);
+        }
+        [TestMethod]
+        // ToString Int 1 item List
+        public void ToStringOverload_1Int_ReturnsItemAsString()
+        {
+            // Arrange
+            CustomList<int> firstList = new CustomList<int>() { 1 };
+            string results;
+            string resultsExpected = "1";
 
+            // Act
+            results = firstList.ToString();
 
+            // Assert
+            Assert.AreEqual(results, resultsExpected);
+        }
+
+        [TestMethod]
+        // ToString String 5 item List
+        public void ToStringOverload_5Strings_ReturnsItemsAsString()
+        {
+            // Arrange
+            CustomList<string> firstList = new CustomList<string>() { "a", "c", "e", "b", "y" };
+            string results;
+            string resultsExpected = "a c e b y";
+
+            // Act
+            results = firstList.ToString();
+
+            // Assert
+            Assert.AreEqual(results, resultsExpected);
+        }
+        [TestMethod]
+        // ToString Int 5 item List
+        public void ToStringOverload_5Ints_ReturnsItemAsString()
+        {
+            // Arrange
+            CustomList<int> firstList = new CustomList<int>() { 1, 2, 300, 4, 5 };
+            string results;
+            string resultsExpected = "1 2 300 4 5";
+
+            // Act
+            results = firstList.ToString();
+
+            // Assert
+            Assert.AreEqual(results, resultsExpected);
+        }
+        [TestMethod]
+        // ToString String 5 multi-letter item List
+        public void ToStringOverload_5MultiLetterStrings_ReturnsItemsAsString()
+        {
+            // Arrange
+            CustomList<string> firstList = new CustomList<string>() { "ace", "charlie", "e", "b", "yoyo" };
+            string results;
+            string resultsExpected = "ace charlie e b yoyo";
+
+            // Act
+            results = firstList.ToString();
+
+            // Assert
+            Assert.AreEqual(results, resultsExpected);
+        }
 
 
 

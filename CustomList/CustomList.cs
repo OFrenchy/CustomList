@@ -257,12 +257,16 @@ namespace CustomListProject
             }
             return firstList;
         }
-        public override string ToString ()      //(string delimiter = ",")
+        public override string ToString ()      //(string delimiter = ",") // tried this, didn't work
         {
             string output = "";
-            foreach (T thisItem in items)
+            //foreach (T thisItem in items)   // this doesn't work;  there are 4 spots in the array at instantiation;  ints are instantiated at 0
+            //{
+            //    output = output + thisItem.ToString() + " ";
+            //}
+            for (int i = 0; i < count; i++)
             {
-                output = output + thisItem.ToString() + " ";
+                output = output + items[i].ToString() + " ";
             }
             return output.Trim();
         }
