@@ -11,19 +11,42 @@ namespace CustomListProject
         static void Main(string[] args)
         {
 
-            
+            //CustomList<int> firstList = new CustomList<int>() { };
+            //CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            //CustomList<int> resultList;
+            //// Act
+            //resultList = firstList - secondList;
+            //Console.WriteLine(resultList.Count);
 
 
+            //CustomList<int> firstList = new CustomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            //CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            //CustomList<int> resultList;
+            //// Act
+            //resultList = firstList - secondList;
+            //Console.WriteLine(resultList.Count);
 
-
-
-            CustomList<int> firstList = new CustomList<int>() { 1, 3, 5, 7, 8, 9 };
-            Console.WriteLine(   firstList.Count);
-            CustomList<int> secondList = new CustomList<int>() { 2, 4, 6 };
-            Console.WriteLine(secondList.Count);
-            CustomList<int> zippedList;
+            CustomList<int> firstList = new CustomList<int>() { 5,5,5,5,6,6,6, 4,4,3};
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
             // Act
-            zippedList = firstList.Zipper(secondList);
+            resultList = firstList - secondList;
+            Console.WriteLine(resultList.Count);
+
+
+
+
+
+
+
+
+            //CustomList<int> firstList = new CustomList<int>() { 1, 3, 5, 7, 8, 9 };
+            //Console.WriteLine(   firstList.Count);
+            //CustomList<int> secondList = new CustomList<int>() { 2, 4, 6 };
+            //Console.WriteLine(secondList.Count);
+            //CustomList<int> zippedList;
+            //// Act
+            //zippedList = firstList.Zipper(secondList);
 
 
 

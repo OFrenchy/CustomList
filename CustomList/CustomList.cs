@@ -43,7 +43,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T> : IEnumerable
+    public class CustomList<T> : IEnumerable , IComparable
     {
         // class members
         private int arraySize = 4;
@@ -232,25 +232,87 @@ namespace CustomListProject
             {
                 newList.Add(thisItem);
             }
-            //CustomList<int> thing = new CustomList<int>();
-            //return thing;
-
             return newList;
-
-
         }
         // overload the – operator:  makes {1,3,5} & {2,1,6} into {3,5}
         public static CustomList<T> operator - (CustomList<T> firstList, CustomList<T> secondList)
         {
-            CustomList<T> newList = new CustomList<T>();
+            if (firstList.Count == 0 || secondList.Count == 0 )
+            {
+                return firstList;
+            }
             // loop through the secondList, looking for matching items in the firstList;
             // if you find a match, Remove it from firstList
-
-
-
-
-            return newList;
+            foreach (T thisItem in secondList)
+            {
+                int beforeCount;
+                //while (firstList.IndexOf(thisItem) >= 0)
+                do
+                {
+                    beforeCount = firstList.Count;
+                    firstList.Remove(thisItem);
+                }
+                while (firstList.Count < beforeCount && firstList.Count > 0);
+            }
+            return firstList;
         }
+        public int IndexOf(T item)
+        {
+            int i;
+            int index = -1;
+            for (i =0; i < count; i++)
+            {
+                if (Equals(items[i], item))
+                    {
+                        index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        public void Sort()
+        {
+            // if there's 0 or 1 items, skip it
+            if (count <= 1 )
+            {
+                return;
+            }
+
+            bool swappedValues = false;
+            do
+            {
+                for (int i = 1; i < count; i++)
+                {
+                    IComparable<T>;
+                    if ( items[i - 1] > items[i])
+                    {
+                        T holdThis;
+                        holdThis = items[i - 1];
+                        items[i - 1] = items[1];
+                        items[i] = holdThis;
+                        swappedValues = true;
+                    }
+                }
+            }
+            while (swappedValues == true);
+        }
+        // Implement IComparable CompareTo method - provide default sort order.
+        int IComparable.CompareTo(object firstItem)     // T firstItem, T secondItem)
+        {
+            //T c = (T)thisItem;
+            //return String.Compare(this.items[0], );
+
+            return 1;
+
+        }
+        //// Implement IComparable CompareTo method - provide default sort order.
+        //int IComparable.CompareTo(object obj)
+        //{
+        //    car c = (car)obj;
+        //    return String.Compare(this.make, c.make);
+        //}
+
 
 
         public override string ToString()

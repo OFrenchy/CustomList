@@ -672,11 +672,11 @@ namespace CustomListTest
             Assert.AreEqual(resultList.Count, ExpectedResults);
         }
         [TestMethod]
-        // subtracting two CustomList<int> first list 11 items, second list 3 items
-        public void SubtractionOverload_1stListEmpty_CountEquals0()
+        // subtracting two CustomList<int> first list all items will be removed
+        public void SubtractionOverload_1stListAllItemsRemoved_CountEquals0()
         {
             // Arrange
-            int ExpectedResults = 8;
+            int ExpectedResults = 0;
             CustomList<int> firstList = new CustomList<int>() { 5,5,5,5,6,6,6,6};
             CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
             CustomList<int> resultList;
@@ -684,6 +684,75 @@ namespace CustomListTest
             resultList = firstList - secondList;
             // Assert
             Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+
+        [TestMethod]
+        // subtracting two CustomList<int> first list all but one item (the last) will be removed
+        public void SubtractionOverload_1stListLastItemRemains_CountEquals1ItemEq3()
+        {
+            // Arrange
+            //int ExpectedResults = 0;
+            CustomList<int> firstList = new CustomList<int>() { 5, 5, 4, 6, 5, 5, 6, 6,5,4, 6, 6, 3  };
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList - secondList;
+            // Assert
+            Assert.IsTrue(resultList.Count == 1 && resultList[0] == 3);
+        }
+
+        [TestMethod]
+        // subtracting two CustomList<int> first list empty
+        public void SubtractionOverload_1stListEmpty_CountEquals0()
+        {
+            // Arrange
+            int ExpectedResults = 0;
+            CustomList<int> firstList = new CustomList<int>() {};
+            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList - secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+        [TestMethod]
+        // subtracting two CustomList<int> second list empty
+        public void SubtractionOverload_2ndListEmpty_CountEquals3()
+        {
+            // Arrange
+            int ExpectedResults = 3;
+            CustomList<int> firstList = new CustomList<int>() { 4, 5, 6 };
+            CustomList<int> secondList = new CustomList<int>() { };
+            CustomList<int> resultList;
+            // Act
+            resultList = firstList - secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+
+        [TestMethod]
+        public void Sort_10Items_SortedProperly()
+        {
+            // Arrange
+            CustomList<int> customList = new CustomList<int>() { 9,8,7,6,5,4,3,2,1,9,0 };
+
+            // Act
+            customList.Sort();
+            
+            // Assert
+            Assert.IsTrue(
+                customList[0] == 0 &&
+                customList[1] == 1 &&
+                customList[2] == 2 &&
+                customList[3] == 3 &&
+                customList[4] == 4 &&
+                customList[5] == 5 &&
+                customList[6] == 6 &&
+                customList[7] == 7 &&
+                customList[8] == 8 &&
+                customList[9] == 9 &&
+                customList[10] == 9
+                );
         }
     }
 }
