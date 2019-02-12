@@ -10,6 +10,15 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
+            CustomList<string> firstList = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
+
+            firstList.Sort();
+            foreach (string thisString in firstList)
+            {
+                Console.WriteLine(thisString);
+            }
+
+            Console.WriteLine("");
 
             //CustomList<int> firstList = new CustomList<int>() { };
             //CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
@@ -26,12 +35,12 @@ namespace CustomListProject
             //resultList = firstList - secondList;
             //Console.WriteLine(resultList.Count);
 
-            CustomList<int> firstList = new CustomList<int>() { 5,5,5,5,6,6,6, 4,4,3};
-            CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
-            CustomList<int> resultList;
-            // Act
-            resultList = firstList - secondList;
-            Console.WriteLine(resultList.Count);
+            //CustomList<int> firstList = new CustomList<int>() { 5,5,5,5,6,6,6, 4,4,3};
+            //CustomList<int> secondList = new CustomList<int>() { 4, 5, 6 };
+            //CustomList<int> resultList;
+            //// Act
+            //resultList = firstList - secondList;
+            //Console.WriteLine(resultList.Count);
 
 
 

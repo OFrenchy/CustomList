@@ -43,7 +43,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T> : IEnumerable , IComparable
+    public class CustomList<T> : IEnumerable //, IComparer // IComparable
     {
         // class members
         private int arraySize = 4;
@@ -51,11 +51,11 @@ namespace CustomListProject
         private int count = 0;//-1;
 
         // constructor = new
-        public CustomList() 
+        public CustomList()
         {
             items = new T[arraySize];
         }
-        
+
         // methods
         private bool isFull()
         {
@@ -103,7 +103,7 @@ namespace CustomListProject
             {
                 return;
             }
-             
+
             // loop through the array, looking for the item
             for (int i = 0; i < count; i++)
             {
@@ -123,11 +123,11 @@ namespace CustomListProject
                     count--;
                     // re-create the original array - TODO when time allows - ??????  use enumerator
                     items = new T[arraySize];
-                   for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
+                    for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
                 }
             }
         }
-        public T this[int index]      
+        public T this[int index]
         {
             // TODO - test this
             // check for index < 0 or >= count
@@ -219,9 +219,9 @@ namespace CustomListProject
             }
             return newList;
         }
-        
+
         // overload the + operator:  makes {1,3,5} & {2,4,6} into {1,3,5,2,4,6}
-        public static CustomList<T> operator + (CustomList<T> firstList, CustomList<T> secondList)
+        public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
             CustomList<T> newList = new CustomList<T>();
             foreach (T thisItem in firstList)
@@ -235,9 +235,9 @@ namespace CustomListProject
             return newList;
         }
         // overload the – operator:  makes {1,3,5} & {2,1,6} into {3,5}
-        public static CustomList<T> operator - (CustomList<T> firstList, CustomList<T> secondList)
+        public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
         {
-            if (firstList.Count == 0 || secondList.Count == 0 )
+            if (firstList.Count == 0 || secondList.Count == 0)
             {
                 return firstList;
             }
@@ -256,15 +256,20 @@ namespace CustomListProject
             }
             return firstList;
         }
+        public override string ToString()
+        {
+            return "";
+        }
+
         public int IndexOf(T item)
         {
             int i;
             int index = -1;
-            for (i =0; i < count; i++)
+            for (i = 0; i < count; i++)
             {
                 if (Equals(items[i], item))
-                    {
-                        index = i;
+                {
+                    index = i;
                     break;
                 }
             }
@@ -274,7 +279,7 @@ namespace CustomListProject
         public void Sort()
         {
             // if there's 0 or 1 items, skip it
-            if (count <= 1 )
+            if (count <= 1)
             {
                 return;
             }
@@ -282,14 +287,36 @@ namespace CustomListProject
             bool swappedValues = false;
             do
             {
+                // This may not be the most efficient method of sorting, 
+                // but if there was any serious amount of data to sort, 
+                // it would be done in a database
+                swappedValues = false;
                 for (int i = 1; i < count; i++)
                 {
-                    IComparable<T>;
-                    if ( items[i - 1] > items[i])
+                    //IComparable<T>;
+
+                    //if ( items[i - 1].ToString() > items[i].ToString()  )
+                    //IComparer Compare(items[i - 1].ToString(), items[i].ToString());
+                    //StringComparer stringComparer = new StringComparison
+                    //IComparer Compare(items[i - 1], items[i])
+                    //IComparer comparer;
+                    //Console.WriteLine(sortTsAscending(items[i - 1], items[i]).Equals(1) );
+                    //if (sortTsAscending(items[i - 1], items[i]) > 0)
+
+                    //string type = typeof(items[i])
+
+                    //sortTsAscending(items[i - 1], items[i]).Equals(1)
+
+                    //Console.WriteLine(items[i - 1].ToString() + ", " + items[i].ToString() + ", " + sortTsAscending(items[i - 1], items[i]).Equals(1) );
+                    //int result = sortTsAscending(items[i - 1], items[i]);
+
+                    // This satisfies the compiler, 
+                    // but only works for strings, not for numbers of any 'sort'.  :-(
+                    if (sortTsAscending(items[i - 1], items[i]) == 1)
                     {
                         T holdThis;
-                        holdThis = items[i - 1];
-                        items[i - 1] = items[1];
+                        holdThis = items[i - 1];                    // "r", "a", "z", "d" , "y", "y", "a" 
+                        items[i - 1] = items[i];
                         items[i] = holdThis;
                         swappedValues = true;
                     }
@@ -297,31 +324,24 @@ namespace CustomListProject
             }
             while (swappedValues == true);
         }
-        // Implement IComparable CompareTo method - provide default sort order.
-        int IComparable.CompareTo(object firstItem)     // T firstItem, T secondItem)
-        {
-            //T c = (T)thisItem;
-            //return String.Compare(this.items[0], );
-
-            return 1;
-
-        }
-        //// Implement IComparable CompareTo method - provide default sort order.
-        //int IComparable.CompareTo(object obj)
-        //{
-        //    car c = (car)obj;
-        //    return String.Compare(this.make, c.make);
-        //}
-
-
-
-        public override string ToString()
-        {
-            return "";
-        }
-
         
-
+        //int IComparer.Compare(object firstItem, object secondItem)
+        //{
+        //    Console.WriteLine(String.Compare(firstItem.ToString(), secondItem.ToString()));
+        //    return String.Compare(firstItem.ToString(), secondItem.ToString());
+        //}
+        public static int sortTsAscending(T firstItem, T secondItem)
+        {
+            IComparer comparer = (IComparer)new sortTsAscending();
+            return comparer.Compare(firstItem, secondItem);
+        }
     }
-
+    public class sortTsAscending : IComparer
+    {
+        public int Compare(object firstItem, object secondItem)
+        {
+            return String.Compare(firstItem.ToString(), secondItem.ToString());
+        }
+    }
 }
+

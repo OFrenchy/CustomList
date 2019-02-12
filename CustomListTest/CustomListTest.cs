@@ -731,27 +731,45 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        public void Sort_10Items_SortedProperly()
+        public void Sort_9Strings_SortedProperly()
         {
             // Arrange
-            CustomList<int> customList = new CustomList<int>() { 9,8,7,6,5,4,3,2,1,9,0 };
+            CustomList<string> customList = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
+
 
             // Act
             customList.Sort();
-            
-            // Assert
+
+            // Assert         //a a A d h r w y y z
             Assert.IsTrue(
-                customList[0] == 0 &&
-                customList[1] == 1 &&
-                customList[2] == 2 &&
-                customList[3] == 3 &&
-                customList[4] == 4 &&
-                customList[5] == 5 &&
-                customList[6] == 6 &&
-                customList[7] == 7 &&
-                customList[8] == 8 &&
-                customList[9] == 9 &&
-                customList[10] == 9
+                customList[0] == "a" &&
+                customList[1] == "a" &&
+                customList[2] == "A" &&
+                customList[3] == "d" &&
+                customList[4] == "h" &&
+                customList[5] == "r" &&
+                customList[6] == "w" &&
+                customList[7] == "y" &&
+                customList[8] == "y" &&
+                customList[9] == "z"
+                );
+        }
+        [TestMethod]
+        public void Sort_4Ints_SortedProperly()
+        {
+            // Arrange
+            CustomList<int> customList = new CustomList<int>() { 199, 99,104, 77};
+
+
+            // Act
+            customList.Sort();
+
+            // Assert         //a a A d h r w y y z
+            Assert.IsTrue(
+                customList[0] == 77 &&
+                customList[1] == 99 &&
+                customList[2] == 104 &&
+                customList[3] == 199
                 );
         }
     }
