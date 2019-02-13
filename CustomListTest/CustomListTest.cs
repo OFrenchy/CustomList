@@ -852,8 +852,6 @@ namespace CustomListTest
             Assert.AreEqual(results, resultsExpected);
         }
 
-
-
         [TestMethod]
         public void Sort_9Strings_SortedProperly()
         {
@@ -1000,7 +998,5 @@ namespace CustomListTest
                 i == 5
                 );
         }
-
-
     }
 }

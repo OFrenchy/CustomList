@@ -15,8 +15,7 @@ namespace CustomListProject
             CustomList<string> firstCustomList = new CustomList<string>() { "a", "b", "c", "d", "z" };
             CustomList<string> secondCustomList = new CustomList<string>() { "c", "d" };
             CustomList<string> result;
-            result = firstCustomList - secondCustomList;
-
+            result = firstCustomList - secondCustomList; // result contains a, b, z
 
             CustomList<int> firstCustomListInts = new CustomList<int>() { 1,2,3,4,5,6 };
             CustomList<int> secondCustomListInts = new CustomList<int>() { 3,4 };
