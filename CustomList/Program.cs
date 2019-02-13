@@ -10,23 +10,36 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
+            // TODO - is it okay to leave all this in here, the code used for testing?
 
-            CustomList<string> customList = new CustomList<string>() { "a", "b", "c", "d", "z" };
-            string[] storeThese = new string[7];
-            int i = 0;
-            // Act
-            foreach (string thisString in customList)
-            {
-                storeThese[i] = thisString;
-                i++;
-            }
-            Console.WriteLine(    storeThese[0] == "a");
-            Console.WriteLine(storeThese[1] == "b" );
-            Console.WriteLine(storeThese[2] == "c" );
-            Console.WriteLine(storeThese[3] == "d" );
-            Console.WriteLine(storeThese[4] == "z" );
-            Console.WriteLine(i == 5);
-            Console.WriteLine();
+            CustomList<string> firstCustomList = new CustomList<string>() { "a", "b", "c", "d", "z" };
+            CustomList<string> secondCustomList = new CustomList<string>() { "c", "d" };
+            CustomList<string> result;
+            result = firstCustomList - secondCustomList;
+
+
+            CustomList<int> firstCustomListInts = new CustomList<int>() { 1,2,3,4,5,6 };
+            CustomList<int> secondCustomListInts = new CustomList<int>() { 3,4 };
+            CustomList<int> resultInts;
+            resultInts = firstCustomListInts - secondCustomListInts;
+
+
+            //CustomList<string> customList = new CustomList<string>() { "a", "b", "c", "d", "z" };
+            //string[] storeThese = new string[7];
+            //int i = 0;
+            //// Act
+            //foreach (string thisString in customList)
+            //{
+            //    storeThese[i] = thisString;
+            //    i++;
+            //}
+            //Console.WriteLine(    storeThese[0] == "a");
+            //Console.WriteLine(storeThese[1] == "b" );
+            //Console.WriteLine(storeThese[2] == "c" );
+            //Console.WriteLine(storeThese[3] == "d" );
+            //Console.WriteLine(storeThese[4] == "z" );
+            //Console.WriteLine(i == 5);
+            //Console.WriteLine();
 
 
             //CustomList<string> customList = new CustomList<string>() {  "h199", "ZZ", "DD" };
@@ -55,7 +68,7 @@ namespace CustomListProject
             //customListStrings.Sort();
             //Console.WriteLine(customListStrings.ToString());
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
 
 
@@ -66,12 +79,12 @@ namespace CustomListProject
             //    Console.WriteLine(thisString);
             //}
 
-            CustomList<string> firstList = new CustomList<string>() { "ace", "charlie", "e", "b", "yoyo" };
-            string results;
-            string resultsExpected = "ace charlie e b yoyo";
-            results = firstList.ToString();
-            Console.WriteLine("'" + results + "'");
-            Console.WriteLine("");
+            //CustomList<string> firstList = new CustomList<string>() { "ace", "charlie", "e", "b", "yoyo" };
+            //string results;
+            //string resultsExpected = "ace charlie e b yoyo";
+            //results = firstList.ToString();
+            //Console.WriteLine("'" + results + "'");
+            //Console.WriteLine("");
 
 
             //CustomList<int> firstList = new CustomList<int>() { 199, };

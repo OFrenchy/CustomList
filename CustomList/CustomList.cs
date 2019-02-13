@@ -315,7 +315,6 @@ namespace CustomListProject
             bool swappedValues = false;
             bool dataIsNumeric = false;
 
-            // TODO - ??? - can I use this ToString in this lines
             string thisType = items[0].GetType().ToString();
             bool dataIsString = false;
             // TODO - ??? - can I use this IndexOf in these next few lines 

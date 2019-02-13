@@ -1,1 +1,46 @@
-As a developer, I want to write documentation in a.txt file that describes the details //      and functionality of my – operator overload. I want to include details such as “syntax”, //      “parameters”, “return type”, and an example of it being used, with the output. I want to use //      the following piece of documentation as a guideline for my own documentation: //      https://msdn.microsoft.com/en-us/library/cd666k3e%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396
+As a developer, I want to write documentation in a.txt file that describes the details 
+//      and functionality of my – operator overload. I want to include details such as “syntax”, 
+//      “parameters”, “return type”, and an example of it being used, with the output. I want to use 
+//      the following piece of documentation as a guideline for my own documentation: 
+//      https://msdn.microsoft.com/en-us/library/cd666k3e%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396
+
+
+
+
+CustomList<T> Subtraction Operator Overload
+
+Namespace:
+CustomListProject
+
+Assemblies:
+N/A
+
+Removes the items in a CustomList<T> instance from the items in another CustomList<T> instance.
+ 
+C# Usage: 
+result = firstCustomList – secondCustomList;
+
+Parameters
+Two instances of CustomList<T>.  Either one can have 0 items.
+
+
+Returns
+CustomList<T> 
+Will have a Count of 0 if all items were removed, or if the first list had 0 items.
+
+Implements
+
+
+
+Examples
+
+CustomList<string> firstCustomList = new CustomList<string>() {"a", "b", "c", "d", "z"};
+CustomList<string> secondCustomList = new CustomList<string>() { "c", "d" };
+CustomList<string> result;
+result = firstCustomList - secondCustomList;  // result contains a, b, z
+
+CustomList<int> firstCustomListInts = new CustomList<int>() { 1,2,3,4,5,6 };
+CustomList<int> secondCustomListInts = new CustomList<int>() { 3,4 };
+CustomList<int> resultInts;
+resultInts = firstCustomListInts - secondCustomListInts;  // result contains 1, 2, 5, 6
+

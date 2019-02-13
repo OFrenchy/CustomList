@@ -672,6 +672,20 @@ namespace CustomListTest
             Assert.AreEqual(resultList.Count, ExpectedResults);
         }
         [TestMethod]
+        // subtracting two CustomList<string> first list 7 strings, second list 3 strings
+        public void SubtractionOverload_1stLists7Strings2ndList3Strings_CountEquals4()
+        {
+            // Arrange
+            int ExpectedResults = 4;
+            CustomList<string> firstList = new CustomList<string>() { "1", "2", "3", "4", "5", "6", "7" };
+            CustomList<string> secondList = new CustomList<string>() { "4", "5", "6" };
+            CustomList<string> resultList;
+            // Act
+            resultList = firstList - secondList;
+            // Assert
+            Assert.AreEqual(resultList.Count, ExpectedResults);
+        }
+        [TestMethod]
         // subtracting two CustomList<int> first list all items will be removed
         public void SubtractionOverload_1stListAllItemsRemoved_CountEquals0()
         {
