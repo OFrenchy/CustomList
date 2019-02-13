@@ -962,7 +962,30 @@ namespace CustomListTest
                 );
         }
 
-
+        [TestMethod]
+        // Testing the enumerator functionality
+        public void Enumerator_5Strings_ForEachReturns5Strings()
+        {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>() { "a", "b", "c", "d", "z" };
+            string[] storeThese = new string[7];
+            int i = 0;
+            // Act
+            foreach (string thisString in customList)
+            {
+                storeThese[i] = thisString;
+                i++;
+            }
+            // Assert
+            Assert.IsTrue(
+                storeThese[0] == "a" &&
+                storeThese[1] == "b" &&
+                storeThese[2] == "c" &&
+                storeThese[3] == "d" &&
+                storeThese[4] == "z" &&
+                i == 5
+                );
+        }
 
 
     }

@@ -7,40 +7,54 @@ using System.Threading.Tasks;
 
 //Custom List Class Project(out of 140 points)
 //User Stories
-//The built-in List<T> class is a generic class that acts as a wrapper over the array class. You cannot use built-in List or Array methods.For questions regarding how to approach a specific feature, please start by referring to the C# List<T> class documentation to get an idea of how the built-in List<T> class handles various situations and methods.
-//(20 points) As a developer, I want to use Test Driven Development(TDD), so that I can write tests for my methods to pass to ensure proper functionality within my application.There needs to be several tests per method.
-//(5 points): As a developer, I want to make good, consistent commits.
-//(10 points): As a developer, I want to use a custom-built list class that stores its values in an array, so that I can store any data type in my collection.
-//(10 points): As a developer, I want a read-only Count property implemented on the custom-built list class, so that I can get a count of the number of elements in my custom list class instance.
-//(10 points): As a developer, I want to create a C# indexer so that I can make the objects in my list accessible via index. I want to properly ensure that a user cannot access an out-of-bounds index.
-//(10 points): As a developer, I want the ability to add an object to an instance of my custom-built list class.
-//(10 points): As a developer, I want the ability to remove an object from an instance of my custom-built list class.
-//(10 points): As a developer, I want to be able to override the ToString method that converts the contents of the custom list to a string.
-//(10 points): As a developer, I want to be able to overload the + operator, so that I can add two instances of the custom list class together.
-//-	List<int> one = new List<int>() { 1, 3, 5 }; and List<int> two = new List<int>() { 2, 4, 6 };
-//-	List<int> result = one + two;
-//-	result has 1,3,5,2,4,6
-//(10 points): As a developer, I want to be able to overload the – operator, so that I can subtract one instance of a custom list class from another instance of a custom list class.
-//-	List<int> one = new List<int>() { 1, 3, 5 }; and List<int> two = new List<int>() { 2, 1, 6 };
-//-	List<int> result = one - two;
-//-	result has 3,5
-//(5 points): As a developer, I want to write documentation in a.txt file that describes the details and functionality of my – operator overload.I want to include details such as “syntax”, “parameters”, “return type”, and an example of it being used, with the output.I want to use the following piece of documentation as a guideline for my own documentation: 
-//https://msdn.microsoft.com/en-us/library/cd666k3e%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396
-//(10 points): As a developer, I want the ability to zip two custom list class instances together in the form of a zipper.An example:
-//-	I have List<int> odd = new List<int>() { 1, 3, 5 }; and List<int> even = new List<int>() { 2, 4, 6 }; 
-//-	odd.Zip(even);
-//-	When lists odd and even are zipped together, your new list will contain values 1,2,3,4,5,6
-//(10 points): As a developer, I want the custom list class to be iterable.
+//The built-in List<T> class is a generic class that acts as a wrapper over the array class. You cannot use built-in List or Array methods. For questions regarding how to approach a specific feature, please start by referring to the C# List<T> class documentation to get an idea of how the built-in List<T> class handles various situations and methods.
+//X(20 points) As a developer, I want to use Test Driven Development(TDD), so that I can write tests for my methods to pass to ensure proper functionality within my application.There needs to be several tests per method.
+//X(5 points): As a developer, I want to make good, consistent commits.
+//X(10 points): As a developer, I want to use a custom-built list class that stores its values in an array, so that I can store any(?) data type in my collection.
+//X(10 points): As a developer, I want a read-only Count property implemented on the custom-built list class, so that I can get a count of the number of elements in my custom list class instance.
+//X(10 points): As a developer, I want to create a C# indexer so that I can make the objects in my list accessible via index. I want to properly ensure that a user cannot access an out-of-bounds index.
+//X(10 points): As a developer, I want the ability to add an object to an instance of my custom-built list class.
+//X(10 points): As a developer, I want the ability to remove an object from an instance of my custom-built list class.
+//X?? Is this done correctly? (10 points): As a developer, I want to be able to override the ToString method that converts the contents of the custom list to a string.
+//X(10 points): As a developer, I want to be able to overload the + operator, so that I can add two instances of the custom list class together.
+//      -	List<int> one = new List<int>() { 1, 3, 5 }; and List<int> two = new List<int>() { 2, 4, 6 };
+//      -	List<int> result = one + two;
+//      -	result has 1,3,5,2,4,6
+//X(10 points): As a developer, I want to be able to overload the – operator, so that I can subtract one instance of a custom list class from another instance of a custom list class.
+//      -	List<int> one = new List<int>() { 1, 3, 5 }; and List<int> two = new List<int>() { 2, 1, 6 };
+//      -	List<int> result = one - two;
+//      -	result has 3,5
+//(5 points): As a developer, I want to write documentation in a.txt file that describes the details 
+//      and functionality of my – operator overload. I want to include details such as “syntax”, 
+//      “parameters”, “return type”, and an example of it being used, with the output. I want to use 
+//      the following piece of documentation as a guideline for my own documentation: 
+//      https://msdn.microsoft.com/en-us/library/cd666k3e%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396
+//X(10 points): As a developer, I want the ability to zip two custom list class instances together in the form of a zipper.An example:
+//      -	I have List<int> odd = new List<int>() { 1, 3, 5 }; and List<int> even = new List<int>() { 2, 4, 6 }; 
+//      -	odd.Zip(even);
+//      -	When lists odd and even are zipped together, your new list will contain values 1,2,3,4,5,6
+//X(10 points): As a developer, I want the custom list class to be iterable.
 //(10 points): As a developer, I want to use C# best practices, SOLID design principles, and good naming conventions on the project. 
-//(Bonus 5 points) : As a developer, I want the ability to sort an instance of my custom-built list class. To be eligible for the bonus points, you may not use Array.Sort() that is already built in and you must tell us what sorting algorithm you used.
-// (Bonus 5 points): As a developer, I want the ability to earn bonus points for an EASTER EGG user story, regarding implementing a specific good practice on one of the methods specified in a user story above.
+//X(Bonus 5 points) : As a developer, I want the ability to sort an instance of my custom-built list 
+//      class. To be eligible for the bonus points, you may not use Array.Sort() that is already 
+//      built in and you must tell us what sorting algorithm you used.
+//?(Bonus 5 points): As a developer, I want the ability to earn bonus points  
+//      for an EASTER EGG user story, regarding implementing a specific good practice 
+//      on one of the methods specified in a user story above.
 // NOTICE: get your unit tests (test methods) checked off by an instructor before you begin writing your methods to ensure you are on the correct path.
 //
 // Additional user stories by "author"
-// - Because there is no user story that requires the shrinkage of the array after removing items, 
-//      I will not concern myself with making the array smaller.
-// - Because the ToString user story does not specify what delimiter to use, I will use 
-//      a space " " to delimit.  I 
+// - TODO - should/must I make the array smaller?  To get max points in the SOLID area?
+// As a developer, because there is no user story that requires the shrinkage of
+//       the array after removing items, I will not concern myself with making the array smaller.
+// As a developer, because the ToString user story does not specify what delimiter to use, 
+//      I will use a space " " to delimit.
+// As a developer, in the zipper method, I will allow the user to zip lists of different lengths
+//      in order to make it as useful as possible
+// As a developer, I want to use the enumerator foreach at least once in this project 
+// As a developer, for the Sort method, I will use a simple looping/brute force iteration
+//      to compare the values, and will stop when you can iterate through the whole collection
+//      without swapping a value.
 
 namespace CustomListProject
 {
@@ -60,14 +74,8 @@ namespace CustomListProject
         // methods
         private bool isFull()
         {
-            if (arraySize == count)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (arraySize == count) { return true; }
+            else { return false; }
         }
         public int Count
         {
@@ -75,10 +83,7 @@ namespace CustomListProject
         }
         public void Add(T item)
         {
-            if (item == null)
-            {
-                return;
-            }
+            if (item == null) { return;  }
             
             // if there is room, add it to the array
             if (!isFull())
@@ -96,8 +101,11 @@ namespace CustomListProject
                 // copy the old array to the temp one
                 for (int i = 0; i < count; i++) { tempItems[i] = items[i]; }
                 // re-create the original array, double size
+                
+                // TODO - move this code to a new method: items = copyItemsToNewArray(arrayName, sizeOfNewArray, maxIndex)
                 items = new T[arraySize];
                 for (int i = 0; i < count; i++) { items[i] = tempItems[i]; }
+                
                 // add the new item to the array
                 items[count] = item;
                 count++;
@@ -105,15 +113,12 @@ namespace CustomListProject
         }
         public void Remove(T item)
         {
-            if (count == 0)
-            {
-                return;
-            }
+            if (count == 0) { return; }
 
             // loop through the array, looking for the item
             for (int i = 0; i < count; i++)
             {
-                if (Object.Equals(items[i], item))
+                if (Equals(items[i], item))
                 {
                     // create new array
                     T[] tempItems = new T[arraySize];
@@ -127,6 +132,8 @@ namespace CustomListProject
 
                     // decrement count
                     count--;
+
+                    // TODO - move this code to a new method: items = copyItemsToNewArray(arrayName, sizeOfNewArray, maxIndex =count)
                     // re-create the original array - TODO when time allows - ??????  use enumerator
                     items = new T[arraySize];
                     for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
@@ -135,8 +142,6 @@ namespace CustomListProject
         }
         public T this[int index]
         {
-            // TODO - test this
-            // check for index < 0 or >= count
             // if given an index that's out of bounds, an error will occur
             // IndexOutOfRangeException Class , see https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception?view=netframework-4.7.2
 
@@ -145,7 +150,7 @@ namespace CustomListProject
             get
             {
                 // if index is >= 0 & < count, return it
-                if (index >= 0 && index < count)
+                if (index >= 0 && index < count) 
                 {
                     return items[index];
                 }
@@ -172,10 +177,7 @@ namespace CustomListProject
         }
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < count; i++)
-            {
-                yield return items[i];
-            }
+            for (int i = 0; i < count; i++) { yield return items[i]; }
         }
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
@@ -291,63 +293,19 @@ namespace CustomListProject
             return index;
         }
 
-        //public void Sort() // strings
-        //{
-        //    // if there's 0 or 1 items, skip it
-        //    if (count <= 1)
-        //    {
-        //        return;
-        //    }
-        //    bool swappedValues = false;
-        //    do
-        //    {
-        //        // This may not be the most efficient method of sorting, 
-        //        // but if there was any serious amount of data to sort, 
-        //        // it would be done in a database
-        //        swappedValues = false;
-        //        for (int i = 1; i < count; i++)
-        //        {
-        //            //IComparable<T>;
-
-        //            //if ( items[i - 1].ToString() > items[i].ToString()  )
-        //            //IComparer Compare(items[i - 1].ToString(), items[i].ToString());
-        //            //StringComparer stringComparer = new StringComparison
-        //            //IComparer Compare(items[i - 1], items[i])
-        //            //IComparer comparer;
-        //            //Console.WriteLine(sortTsAscending(items[i - 1], items[i]).Equals(1) );
-        //            //if (sortTsAscending(items[i - 1], items[i]) > 0)
-
-        //            //string type = typeof(items[i])
-
-        //            //sortTsAscending(items[i - 1], items[i]).Equals(1)
-
-        //            //Console.WriteLine(items[i - 1].ToString() + ", " + items[i].ToString() + ", " + sortTsAscending(items[i - 1], items[i]).Equals(1) );
-        //            //int result = sortTsAscending(items[i - 1], items[i]);
-
-        //            // This satisfies the compiler, 
-        //            // but only works for strings, not for numbers of any 'sort'.  :-(
-        //            if (sortTsAscending(items[i - 1], items[i]) == 1)
-        //            {
-        //                T holdThis;
-        //                holdThis = items[i - 1];                    // "r", "a", "z", "d" , "y", "y", "a" 
-        //                items[i - 1] = items[i];
-        //                items[i] = holdThis;
-        //                swappedValues = true;
-        //            }
-        //        }
-        //    }
-        //    while (swappedValues == true);
-        //}
-
+        // TODO - implement this throughout project
         private  void SwapValues(int i, int j)
         {
             T holdThis;
             holdThis = items[j];                    // "r", "a", "z", "d" , "y", "y", "a" 
             items[j] = items[i];
             items[i] = holdThis;
-            
         }
-        public void Sort() // ints
+
+        // Sort function - uses bubble sort method (I thought it was just brute force), 
+        // which loops through the array, swapping values as it finds them, 
+        // until you iterate through the array without having to do a swap.
+        public void Sort() 
         {
             // if there's 0 or 1 items, skip it
             if (count <= 1)
@@ -356,8 +314,11 @@ namespace CustomListProject
             }
             bool swappedValues = false;
             bool dataIsNumeric = false;
+
+            // TODO - ??? - can I use this ToString in this lines
             string thisType = items[0].GetType().ToString();
             bool dataIsString = false;
+            // TODO - ??? - can I use this IndexOf in these next few lines 
             if (thisType.IndexOf("String") > 0)
             {
                 dataIsString = true;
@@ -373,17 +334,6 @@ namespace CustomListProject
             }
             do
             {
-                //Console.WriteLine( thisType);
-                //if (thisType.IndexOf("Int") > 0)    // System.Int32
-                //{
-                //    Console.WriteLine("Int in " + thisType);
-                //}
-                //else if (thisType.IndexOf("String") > 0)    // System.String
-                //{
-                //    Console.WriteLine("Int in " + thisType);
-                //}
-                //Console.WriteLine();
-                
                 // This may not be the most efficient method of sorting, 
                 // but if there was any serious amount of data to sort, 
                 // it would be done in a database
@@ -412,10 +362,6 @@ namespace CustomListProject
             }
             while (swappedValues == true);
         }
-
-
-
-
 
         private static int sortTsAscending(T firstItem, T secondItem)
         {

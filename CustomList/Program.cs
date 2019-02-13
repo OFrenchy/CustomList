@@ -10,29 +10,50 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
-            // Arrange
-            CustomList<string> customList = new CustomList<string>() {  "199", null };
 
+            CustomList<string> customList = new CustomList<string>() { "a", "b", "c", "d", "z" };
+            string[] storeThese = new string[7];
+            int i = 0;
             // Act
-            customList.Sort();
-            Console.WriteLine(customList[0] == "199");
-            Console.WriteLine(customList.Count == 1);
-            
+            foreach (string thisString in customList)
+            {
+                storeThese[i] = thisString;
+                i++;
+            }
+            Console.WriteLine(    storeThese[0] == "a");
+            Console.WriteLine(storeThese[1] == "b" );
+            Console.WriteLine(storeThese[2] == "c" );
+            Console.WriteLine(storeThese[3] == "d" );
+            Console.WriteLine(storeThese[4] == "z" );
+            Console.WriteLine(i == 5);
+            Console.WriteLine();
 
 
-            CustomList<int> customListInts = new CustomList<int>() { 199, 99, 104, 77 };
-            customListInts.Sort();
-            Console.WriteLine(customListInts.ToString());
+            //CustomList<string> customList = new CustomList<string>() {  "h199", "ZZ", "DD" };
+            //foreach(string thisString in customList)
+            //{
+            //    Console.WriteLine(thisString);
+            //}
+            //customList.Sort();
+            //for (int i= 0; i < customList.Count; i++)
+            //{
+            //    Console.WriteLine(  customList[i]);
+            //}
+            //Console.WriteLine(customList[0] == "199");
+            //Console.WriteLine(customList.Count == 1);
 
-            CustomList<double> customListDoubles = new CustomList<double>() { 199.5, 99, 104, 199.7, 77 };
-            customListDoubles.Sort();
-            Console.WriteLine(customListDoubles.ToString());
 
 
-            CustomList<string> customListStrings = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
-            customListStrings.Sort();
-            Console.WriteLine(customListStrings.ToString());
+            //CustomList<int> customListInts = new CustomList<int>() { 199, 99, 104, 77 };
+            //customListInts.Sort();
+            //Console.WriteLine(customListInts.ToString());
+            //CustomList<double> customListDoubles = new CustomList<double>() { 199.5, 99, 104, 199.7, 77 };
+            //customListDoubles.Sort();
+            //Console.WriteLine(customListDoubles.ToString());
 
+            //CustomList<string> customListStrings = new CustomList<string>() { "r", "a", "z", "d", "y", "A", "w", "h", "y", "a" };
+            //customListStrings.Sort();
+            //Console.WriteLine(customListStrings.ToString());
 
             Console.WriteLine();
 
