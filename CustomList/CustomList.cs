@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 //      -	List<int> one = new List<int>() { 1, 3, 5 }; and List<int> two = new List<int>() { 2, 1, 6 };
 //      -	List<int> result = one - two;
 //      -	result has 3,5
-//(5 points): As a developer, I want to write documentation in a.txt file that describes the details 
+//X(5 points): As a developer, I want to write documentation in a.txt file that describes the details 
 //      and functionality of my – operator overload. I want to include details such as “syntax”, 
 //      “parameters”, “return type”, and an example of it being used, with the output. I want to use 
 //      the following piece of documentation as a guideline for my own documentation: 
@@ -34,13 +34,19 @@ using System.Threading.Tasks;
 //      -	odd.Zip(even);
 //      -	When lists odd and even are zipped together, your new list will contain values 1,2,3,4,5,6
 //X(10 points): As a developer, I want the custom list class to be iterable.
-//(10 points): As a developer, I want to use C# best practices, SOLID design principles, and good naming conventions on the project. 
+//?TriedButRanOutOfTime(10 points): As a developer, I want to use C# best practices, SOLID design principles, and good naming conventions on the project. 
 //X(Bonus 5 points) : As a developer, I want the ability to sort an instance of my custom-built list 
 //      class. To be eligible for the bonus points, you may not use Array.Sort() that is already 
 //      built in and you must tell us what sorting algorithm you used.
 //?(Bonus 5 points): As a developer, I want the ability to earn bonus points  
 //      for an EASTER EGG user story, regarding implementing a specific good practice 
 //      on one of the methods specified in a user story above.
+// As a developer, I recognize that the Zipper is a binary process - 
+//      adding an item from either one list or the other 
+//      (after which I am adding the additional functionality to allow 
+//      zipping lists of varying lengths),
+//      and so I hope that this will satisfy the Easter egg requirement.  
+
 // NOTICE: get your unit tests (test methods) checked off by an instructor before you begin writing your methods to ensure you are on the correct path.
 //
 //=====================================================================================================
@@ -61,6 +67,11 @@ using System.Threading.Tasks;
 // As a developer, I want to remove all occurences of a the item from the array;
 //      i.e. if I remove 4 from a list containing { 4, 6, 4, 9, 2 }, you would be left with
 //      { 6, 9, 2 }
+// As a developer, I recognize that the Zipper is a binary process - 
+//      adding an item from either one list or the other 
+//      (after which I am adding the additional functionality to allow 
+//      zipping lists of varying lengths),
+//      and so I hope that this will satisfy the Easter egg requirement.  
 
 namespace CustomListProject
 {
@@ -210,6 +221,12 @@ namespace CustomListProject
         //      in order to make it as useful as possible
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
+            // As a developer, I recognize that the Zipper is a binary process - 
+            //      adding an item from either one list or the other 
+            //      (after which I am adding the additional functionality to allow 
+            //      zipping lists of varying lengths),
+            //      and so I hope that this will satisfy the Easter egg requirement.  
+
             // Because these are custom lists, we CAN use its Count methods
             CustomList<T> newList = new CustomList<T>();
 
@@ -247,14 +264,8 @@ namespace CustomListProject
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
             CustomList<T> newList = new CustomList<T>();
-            foreach (T thisItem in firstList)
-            {
-                newList.Add(thisItem);
-            }
-            foreach (T thisItem in secondList)
-            {
-                newList.Add(thisItem);
-            }
+            foreach (T thisItem in firstList) { newList.Add(thisItem); }
+            foreach (T thisItem in secondList) { newList.Add(thisItem); }
             return newList;
         }
         // overload the – operator:  makes {1,3,5} & {2,1,6} into {3,5}
@@ -282,8 +293,7 @@ namespace CustomListProject
         public override string ToString ()      //(string delimiter = ",") // tried this, didn't work
         {
             string output = "";
-            for (int i = 0; i < count; i++)
-            { output = output + items[i].ToString() + " "; }
+            for (int i = 0; i < count; i++) { output = output + items[i].ToString() + " "; }
             return output.Trim();
         }
         
@@ -316,15 +326,16 @@ namespace CustomListProject
         public void Sort() 
         {
             //items.OrderBy(x=>x);  // (didn't work) per https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.orderby?view=netframework-4.7.2
-            //items.OrderBy(m=>m);
-            //// must use foreach to apply the sort, per website above, still didn't work :-(
+            ////items.OrderBy(m=>m);
+            //// must use foreach to apply the sort, per website above, 
+            //// still didn't work with the foreach below:-(
             //foreach ( T item in items)
             //{
             //    break;
             //}
-            //Console.WriteLine(items.ToString());
-            //Console.WriteLine();
-            //return;
+            
+            // TODO - if time allows, try to use the Compare for all values
+            // in order to vastly simplify the code below
 
             // if there's 0 or 1 items, skip it
             if (count <= 1) { return; }
