@@ -9,7 +9,7 @@ N/A
 Removes the items in a CustomList<T> instance from the items in another CustomList<T> instance.
  
 C# Usage, syntax: 
-result = firstCustomList Ð secondCustomList;
+resultList = firstCustomList Ð secondCustomList;
 
 Parameters
 Two instances of CustomList<T>.  Either one can have 0 items.
@@ -25,10 +25,10 @@ Examples
 CustomList<string> firstCustomList = new CustomList<string>() {"a", "b", "c", "d", "z"};
 CustomList<string> secondCustomList = new CustomList<string>() { "c", "d" };
 CustomList<string> result;
-result = firstCustomList - secondCustomList;  // result contains a, b, z
+resultList = firstCustomList - secondCustomList;  // result contains a, b, z
 
 CustomList<int> firstCustomListInts = new CustomList<int>() { 1,2,3,4,5,6 };
 CustomList<int> secondCustomListInts = new CustomList<int>() { 3,4 };
 CustomList<int> resultInts;
-resultInts = firstCustomListInts - secondCustomListInts;  // result contains 1, 2, 5, 6
+resultListInts = firstCustomListInts - secondCustomListInts; // result contains 1, 2, 5, 6
 

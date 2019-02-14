@@ -11,7 +11,20 @@ namespace CustomListProject
         static void Main(string[] args)
         {
             // TODO - is it okay to leave all this in here, the code used for testing?
+            List<int> thing = new List<int>();
+            CustomList<string> thisList = new CustomList<string>() { "z", "a", "b", "w", "c", "d", "z" };
+            thisList.Sort();
+            //foreach (string thisItem in thisList)
+            //{
+            //    break;
+            //}
+            Console.WriteLine(thisList.ToString());
 
+            thisList.Remove("z");
+            Console.WriteLine(thisList.ToString());
+
+            Console.WriteLine(thing.Count);
+            Console.ReadLine();
             CustomList<string> firstCustomList = new CustomList<string>() { "a", "b", "c", "d", "z" };
             CustomList<string> secondCustomList = new CustomList<string>() { "c", "d" };
             CustomList<string> result;

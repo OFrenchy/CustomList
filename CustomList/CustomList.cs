@@ -43,10 +43,13 @@ using System.Threading.Tasks;
 //      on one of the methods specified in a user story above.
 // NOTICE: get your unit tests (test methods) checked off by an instructor before you begin writing your methods to ensure you are on the correct path.
 //
-// Additional user stories by "author"
-// - TODO - should/must I make the array smaller?  To get max points in the SOLID area?
+//=====================================================================================================
+//                ADDITIONAL USER STORIES BY THE "AUTHOR":
+//=====================================================================================================
 // As a developer, because there is no user story that requires the shrinkage of
-//       the array after removing items, I will not concern myself with making the array smaller.
+//      the array after removing items, I will not concern myself with making the array smaller.
+//      If this class were being designed to do much larger loads, there are opportunities
+//      to improve the design throughout. MVP rules.   
 // As a developer, because the ToString user story does not specify what delimiter to use, 
 //      I will use a space " " to delimit.
 // As a developer, in the zipper method, I will allow the user to zip lists of different lengths
@@ -55,6 +58,9 @@ using System.Threading.Tasks;
 // As a developer, for the Sort method, I will use a simple looping/brute force iteration
 //      to compare the values, and will stop when you can iterate through the whole collection
 //      without swapping a value.
+// As a developer, I want to remove all occurences of a the item from the array;
+//      i.e. if I remove 4 from a list containing { 4, 6, 4, 9, 2 }, you would be left with
+//      { 6, 9, 2 }
 
 namespace CustomListProject
 {
@@ -83,8 +89,8 @@ namespace CustomListProject
         }
         public void Add(T item)
         {
-            if (item == null) { return;  }
-            
+            if (item == null) { return; }
+
             // if there is room, add it to the array
             if (!isFull())
             {
@@ -97,48 +103,73 @@ namespace CustomListProject
             {
                 // create new temporary array of double the current size
                 arraySize = arraySize * 2;
-                T[] tempItems = new T[arraySize];
                 // copy the old array to the temp one
-                for (int i = 0; i < count; i++) { tempItems[i] = items[i]; }
+                T[] tempItems = copyItemsToNewArray(items, arraySize, count);
                 // re-create the original array, double size
-                
-                // TODO - move this code to a new method: items = copyItemsToNewArray(arrayName, sizeOfNewArray, maxIndex)
-                items = new T[arraySize];
-                for (int i = 0; i < count; i++) { items[i] = tempItems[i]; }
-                
+                items = copyItemsToNewArray(tempItems, arraySize, count);
                 // add the new item to the array
                 items[count] = item;
                 count++;
             }
         }
+
+        public T[] copyItemsToNewArray(T[] tempArray, int arraySize, int maxIndex)
+        // TODO - modify this method to accept another optional argument, 
+        //        a value to remove, then from the Remove , use the methodology 
+        //        used to copy the array
+        {
+            T[] newArray = new T[arraySize];
+            for (int i = 0; i < maxIndex; i++) { newArray[i] = tempArray[i]; }
+            return newArray;
+        }
+        
         public void Remove(T item)
         {
-            if (count == 0) { return; }
+            // As a developer, because there is no user story that requires the shrinkage of
+            //      the array after removing items, I will not concern myself with making the array smaller.
+            //      If this class were being designed to do much larger loads, there are opportunities
+            //      to improve the design throughout. MVP rules.   
 
-            // loop through the array, looking for the item
-            for (int i = 0; i < count; i++)
+            // create new array
+            T[] tempItems = new T[arraySize];
+            int originalCount = count;
+            int j = 0;
+            for (int i = 0; i < originalCount; i++, j++)
             {
-                if (Equals(items[i], item))
+                if (Equals(items[i], item))     // skip this item
                 {
-                    // create new array
-                    T[] tempItems = new T[arraySize];
-                    // copy the from the old array up to the found item (at i)
-                    // TODO - when time allows, 
-                    // use the inline if HERE;
-                    // skipping i in the copy using continue keyword (see loops powerpoint)
-                    for (int j = 0; j < i; j++) { tempItems[j] = items[j]; }
-                    // now copy the remaining items AFTER i
-                    for (int j = i + 1; j < count; j++) { tempItems[j - 1] = items[j]; }
-
-                    // decrement count
+                    j--;        // decrement the destination counter 
                     count--;
-
-                    // TODO - move this code to a new method: items = copyItemsToNewArray(arrayName, sizeOfNewArray, maxIndex =count)
-                    // re-create the original array - TODO when time allows - ??????  use enumerator
-                    items = new T[arraySize];
-                    for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
                 }
+                else tempItems[j] = items[i];
             }
+            items = tempItems;
+            return;
+
+
+            //// loop through the array, looking for the item
+            //for (int i = 0; i < count; i++)
+            //{
+            //    if (Equals(items[i], item))
+            //    {
+            //        // create new array
+            //        T[] tempItems = new T[arraySize];
+            //        // copy the from the old array up to the found item (at i)
+            //        // TODO - when time allows, 
+            //        // use the inline if HERE;
+            //        // skipping i in the copy using continue keyword (see loops powerpoint)
+            //        for (int j = 0; j < i; j++) { tempItems[j] = items[j]; }
+            //        // now copy the remaining items AFTER i
+            //        for (int j = i + 1; j < count; j++) { tempItems[j - 1] = items[j]; }
+
+            //        // decrement count
+            //        count--;
+            //        // TODO - move this code to a new method: items = copyItemsToNewArray(arrayName, sizeOfNewArray, maxIndex =count)
+            //        // re-create the original array - TODO when time allows - ??????  use enumerator
+            //        items = new T[arraySize];
+            //        for (i = 0; i < count; i++) { items[i] = tempItems[i]; }
+            //    }
+            //}
         }
         public T this[int index]
         {
@@ -151,9 +182,7 @@ namespace CustomListProject
             {
                 // if index is >= 0 & < count, return it
                 if (index >= 0 && index < count) 
-                {
-                    return items[index];
-                }
+                { return items[index]; }
                 else
                 {
                     // this code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
@@ -164,9 +193,7 @@ namespace CustomListProject
             set
             {
                 if (index >= 0 && index < count)
-                {
-                    items[index] = value;
-                }
+                { items[index] = value; }
                 else
                 {
                     // this code adapted from https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions
@@ -179,29 +206,23 @@ namespace CustomListProject
         {
             for (int i = 0; i < count; i++) { yield return items[i]; }
         }
+        // As a developer, in the zipper method, I will allow the user to zip lists of different lengths
+        //      in order to make it as useful as possible
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
-            // allow the user to zip lists that are of different lengths;
             // Because these are custom lists, we CAN use its Count methods
             CustomList<T> newList = new CustomList<T>();
 
             // set the limit of the length where to stop zipping;  
             // after that, add the remaining longer side
             int iLimit;
-            if (count < secondList.Count)
-            {
-                iLimit = count;
-            }
-            else
-            {
-                iLimit = secondList.Count;
-            }
+            if (count < secondList.Count) { iLimit = count; }
+            else { iLimit = secondList.Count; }
 
             for (int i = 0; i < iLimit; i++)
             {
                 newList.Add(items[i]);
                 newList.Add(secondList[i]);
-                //newList.Add(secondList.MoveNext())
             }
 
             // if one side is longer, add the rest of the longer list
@@ -211,18 +232,12 @@ namespace CustomListProject
                 if (count < secondList.Count)
                 {
                     for (int i = iLimit; i < secondList.Count; i++)
-                    {
-                        newList.Add(secondList[i]);
-                        // ???? use movenext
-                    }
+                    { newList.Add(secondList[i]); }
                 }
                 else
                 {
                     for (int i = iLimit; i < count; i++)
-                    {
-                        newList.Add(items[i]);
-                        // ???? use movenext
-                    }
+                    { newList.Add(items[i]); }
                 }
             }
             return newList;
@@ -267,14 +282,8 @@ namespace CustomListProject
         public override string ToString ()      //(string delimiter = ",") // tried this, didn't work
         {
             string output = "";
-            //foreach (T thisItem in items)// in items)   // this doesn't work;  there are 4 spots in the array at instantiation;  ints are instantiated at 0
-            //{
-            //    output = output + thisItem.ToString() + " ";
-            //}
             for (int i = 0; i < count; i++)
-            {
-                output = output + items[i].ToString() + " ";
-            }
+            { output = output + items[i].ToString() + " "; }
             return output.Trim();
         }
         
@@ -293,11 +302,10 @@ namespace CustomListProject
             return index;
         }
 
-        // TODO - implement this throughout project
         private  void SwapValues(int i, int j)
         {
             T holdThis;
-            holdThis = items[j];                    // "r", "a", "z", "d" , "y", "y", "a" 
+            holdThis = items[j]; 
             items[j] = items[i];
             items[i] = holdThis;
         }
@@ -307,17 +315,24 @@ namespace CustomListProject
         // until you iterate through the array without having to do a swap.
         public void Sort() 
         {
+            //items.OrderBy(x=>x);  // (didn't work) per https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.orderby?view=netframework-4.7.2
+            //items.OrderBy(m=>m);
+            //// must use foreach to apply the sort, per website above, still didn't work :-(
+            //foreach ( T item in items)
+            //{
+            //    break;
+            //}
+            //Console.WriteLine(items.ToString());
+            //Console.WriteLine();
+            //return;
+
             // if there's 0 or 1 items, skip it
-            if (count <= 1)
-            {
-                return;
-            }
+            if (count <= 1) { return; }
             bool swappedValues = false;
             bool dataIsNumeric = false;
 
             string thisType = items[0].GetType().ToString();
             bool dataIsString = false;
-            // TODO - ??? - can I use this IndexOf in these next few lines 
             if (thisType.IndexOf("String") > 0)
             {
                 dataIsString = true;
@@ -331,6 +346,8 @@ namespace CustomListProject
             {
                 dataIsNumeric = true;
             }
+            // use a do loop, because we may be given an already-ordered list, 
+            // but we won't know until we get through it the first time
             do
             {
                 // This may not be the most efficient method of sorting, 
@@ -364,7 +381,7 @@ namespace CustomListProject
 
         private static int sortTsAscending(T firstItem, T secondItem)
         {
-            IComparer comparer = (IComparer)new sortTsAscending();
+            sortTsAscending comparer = new sortTsAscending();
             return comparer.Compare(firstItem, secondItem);
         }
     }
