@@ -219,17 +219,17 @@ namespace CustomListProject
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
             // As a developer, I recognize that this method is acting like a 
-            //      static method because it does not change any member variables
+            //      static method because it does not change any member variables;
+            //      however, because I use the count variable (but do not set it), 
+            //      in order to allow the user to zip differing lengths, 
+            //      I cannot set the method as static
 
             // Because these are custom lists, we CAN use its Count methods
             CustomList<T> newList = new CustomList<T>();
 
             // set the limit of the length where to stop zipping;  
             // after that, add the remaining longer side
-            int iLimit;
-            if (count < secondList.Count) { iLimit = count; }
-            else { iLimit = secondList.Count; }
-
+            int iLimit = count < secondList.Count ? count : secondList.Count;
             for (int i = 0; i < iLimit; i++)
             {
                 newList.Add(items[i]);
