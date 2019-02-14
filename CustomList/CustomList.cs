@@ -292,9 +292,16 @@ namespace CustomListProject
         }
         public override string ToString ()      //(string delimiter = ",") // tried this, didn't work
         {
-            string output = "";
-            for (int i = 0; i < count; i++) { output = output + items[i].ToString() + " "; }
-            return output.Trim();
+            StringBuilder output = new StringBuilder();
+            //string output = "";
+            for (int i = 0; i < count; i++)
+            //{ output = output + items[i].ToString() + " "; }
+            {
+                output.Append(items[i]);
+                output.Append(" ");
+            }
+            //return output.Trim();
+            return output.ToString().Trim();
         }
         
         public int IndexOf(T item)

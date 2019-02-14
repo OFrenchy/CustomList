@@ -36,16 +36,16 @@ namespace CustomListProject
             resultInts = firstCustomListInts - secondCustomListInts;
 
 
-            //CustomList<string> customList = new CustomList<string>() { "a", "b", "c", "d", "z" };
-            //string[] storeThese = new string[7];
-            //int i = 0;
-            //// Act
-            //foreach (string thisString in customList)
-            //{
-            //    storeThese[i] = thisString;
-            //    i++;
-            //}
-            //Console.WriteLine(    storeThese[0] == "a");
+            CustomList<string> customList = new CustomList<string>() { "a", "b", "c", "d", "z" };
+            string[] storeThese = new string[7];
+            int i = 0;
+            // Act
+            foreach (string thisString in customList)
+            {
+                storeThese[i] = thisString;
+                i++;
+            }
+            Console.WriteLine(storeThese[0] == "a");
             //Console.WriteLine(storeThese[1] == "b" );
             //Console.WriteLine(storeThese[2] == "c" );
             //Console.WriteLine(storeThese[3] == "d" );
