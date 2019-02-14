@@ -67,11 +67,8 @@ using System.Threading.Tasks;
 // As a developer, I want to remove all occurences of a the item from the array;
 //      i.e. if I remove 4 from a list containing { 4, 6, 4, 9, 2 }, you would be left with
 //      { 6, 9, 2 }
-// As a developer, I recognize that the Zipper is a binary process - 
-//      adding an item from either one list or the other 
-//      (after which I am adding the additional functionality to allow 
-//      zipping lists of varying lengths),
-//      and so I hope that this will satisfy the Easter egg requirement.  
+// As a developer, I recognize that this method is acting like a 
+//      static method because it does not change any member variables
 
 namespace CustomListProject
 {
@@ -221,11 +218,8 @@ namespace CustomListProject
         //      in order to make it as useful as possible
         public CustomList<T> Zipper(CustomList<T> secondList)
         {
-            // As a developer, I recognize that the Zipper is a binary process - 
-            //      adding an item from either one list or the other 
-            //      (after which I am adding the additional functionality to allow 
-            //      zipping lists of varying lengths),
-            //      and so I hope that this will satisfy the Easter egg requirement.  
+            // As a developer, I recognize that this method is acting like a 
+            //      static method because it does not change any member variables
 
             // Because these are custom lists, we CAN use its Count methods
             CustomList<T> newList = new CustomList<T>();
